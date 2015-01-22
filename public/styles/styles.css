@@ -23,6 +23,14 @@
 	float: right;
 }
 
+#signUpPage{
+	display: none;
+}
+
+#logInPage{
+	display: none;
+}
+
 #seller{
 	display: inline;
 	height: 100px;
