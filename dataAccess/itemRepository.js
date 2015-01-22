@@ -12,7 +12,7 @@ var createItem = function(data, callback){
 
       });
     } else {
-      callback('Item exists');
+      callback('Item exists', null);
     }
   });
 };

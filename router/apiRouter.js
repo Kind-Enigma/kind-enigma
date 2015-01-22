@@ -3,7 +3,7 @@ var router = express.Router();
 var dbUser = require('../dataAccess/userRepository');
 var dbItem = require('../dataAccess/itemRepository');
 
-router.get('/', function(request, response){
+router.get('/user', function(request, response){
   console.log("Routing to get with params:", request.query);
   dbUser.getUser(request.query, function(error, user){
     if (error) {
@@ -13,7 +13,7 @@ router.get('/', function(request, response){
     }
   });
 })
-  .post('/', function(request, response){
+  .post('/user', function(request, response){
     dbUser.createUser(request.body, function(error, user){
       if (error) {
         response.status(403).send(error);
