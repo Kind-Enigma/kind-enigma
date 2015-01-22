@@ -10,19 +10,37 @@
 
 	</head>
 
-	<body>
+	<body ng-controller='mainController'>
 		<div id = "banner">
 			<span id="title">Fleabay</span>
-			<span><div id="login">
-				<h3><button>Sign Up</button></h3>
-				<h3><button>Log In</button></h3>
-			</div></span>
+			<span>
+				<div id="login">
+					<h3><button ng-click='signUp()'>Sign Up</button></h3>
+					<h3><button ng-click='logIn()'>Log In</button></h3>
+					<div id="logInPage">
+						<h1>Login Page goes here!</h1>
+						<h1>Login Page goes here!</h1>
+						<h1>Login Page goes here!</h1>
+					</div>
+				</div>
+			</span>
 		</div>
 
 
-		<div id="options">
+		<div id="signUpPage">
+			<h1>SignUpPage Here! Need more work!</h1>
 			<div id="seller">I am a seller</div>
+			<form name="signupForm" ng-submit='signUp()'>
+			  <input type='text' ng-model='user.username' required>
+			  <input type="password" ng-model='user.password' required>
+			  <button ng-click='signUp()'>signUp</button>
+			</form>
 			<div id="expert">I am an expert</div>
+			<form name="signupForm" ng-submit='signUp()'>
+			  <input type='text' ng-model='user.username' required>
+			  <input type="password" ng-model='user.password' required>
+			  <button ng-click='signUp()'>signUp</button>
+			</form>
 		</div>
 
 		<div id="expertReview">
