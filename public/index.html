@@ -3,8 +3,10 @@
 	<head>
 		<title>Fleabay</title>
 		<script src="bower_components/angular/angular.min.js"></script>
+
 		<script src="app/utils.js"></script>
 		<script src="app/fleabay.js"></script>
+		<script src="app/expertsTestData.js"></script>
 		<link rel="stylesheet" href="styles/reset.css">
 		<link rel="stylesheet" href="styles/styles.css">
 
@@ -44,7 +46,17 @@
 		</div>
 
 		<div id="expertReview">
-			<p>Expert Review</p>
+			<li ng-repeat='expert in expertList'>
+				<div>
+					<table>
+						<tr><td>Name</td><td>{{expert.name}}</td></tr>
+						<tr><td>Address</td><td>{{expert.address}}</td></tr>
+						<tr><td>Profile</td><td>{{expert.profile}}</td></tr>
+						<tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
+						<tr><td>Item Sold</td><td>{{expert.itemSold}}</td></tr>
+					</table>
+				</div>
+			</li>
 		</div>
 		<div id="finalSales">
 			<p>Final Sales</p>
