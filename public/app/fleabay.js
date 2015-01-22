@@ -5,4 +5,5 @@ fleabay.controller('mainController', function($scope){
 	$scope.logIn = toggleLogInPage;
 
   $scope.expertList = experts;
+  $scope.itemList = items;
 })
