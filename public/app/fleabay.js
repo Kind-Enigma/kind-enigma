@@ -1,9 +1,25 @@
-var fleabay = angular.module('fleabay', []);
+var fleabay = angular.module('fleabay', [
+    'ngRoute',
+    'fleabayControllers'
+  ]);
 
-fleabay.controller('mainController', function($scope){
-	$scope.signUp = toggleSignUpPage;
-	$scope.logIn = toggleLogInPage;
 
-  $scope.expertList = experts;
-  $scope.itemList = items;
-})
+fleabay.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/user', {
+        templateUrl: 'partials/user.html',
+        controller: 'userController'
+      }).
+      when('/expert', {
+        templateUrl: 'partials/expert.html',
+        controller: 'expertController'
+      }).
+      when('/', {
+       templateUrl: 'partials/homepage.html',
+       controller: 'mainController'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  }]);
