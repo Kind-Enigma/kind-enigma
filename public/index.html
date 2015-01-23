@@ -47,8 +47,17 @@
 		</div>
 
 		<div id="expertReview">
-			<li ng-repeat='expert in expertList'>
-				<div>
+			<ul class = "expertExample" ng-repeat='expert in expertList'>
+				<li class="name">{{expert.name}}</li>
+				<li class="sub">{{expert.address}}</li>
+				<li class="sub">{{expert.profile}}</li>
+				<li class="sub">{{expert.ebayLink}}</li>
+				<li class="sub">{{expert.itemSold}}</li>
+			</ul>
+		</div>
+
+
+<!-- 				<div>
 					<table>
 						<tr><th>Name</th><th>{{expert.name}}</th></tr>
 						<tr><td>Address</td><td>{{expert.address}}</td></tr>
@@ -56,9 +65,7 @@
 						<tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
 						<tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr>
 					</table>
-				</div>
-			</li>
-		</div>
+				</div> -->
 		<div id="finalSales">
 			<table>
 				<td ng-repeat='item in itemList'>
