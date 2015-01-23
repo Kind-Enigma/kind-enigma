@@ -2,8 +2,7 @@ var db = require('../dataAccess/dbConnector');
 var dbUser = require('../dataAccess/userRepository');
 var http = require('http');
 
-// TODO: This is used temporarily to load demo data
-// NO! Bad dog. Don't change the global string object
+
 var toTitleCase = function(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };

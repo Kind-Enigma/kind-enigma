@@ -38,6 +38,7 @@ var itemSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  Title: String,
   Description: String,
   Address: String,
   City: String,
