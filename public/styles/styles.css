@@ -1,0 +1,77 @@
+#banner{
+	background-color: #AFBF3F;
+	height: 150px;
+	opacity: 70%;
+}
+
+#title{
+	color: white;
+	font-size: 60px;
+}
+
+#expertList{
+	background-color: green;
+
+}
+
+#options{
+	height: 150px;
+}
+
+#login{
+	margin-top: 10px;
+	float: right;
+}
+
+#signUpPage{
+	display: none;
+}
+
+#logInPage{
+	display: none;
+}
+
+#seller{
+	display: inline;
+	height: 100px;
+	width: 100px;
+	margin-right: 100px;
+	margin-left: 200px;
+}
+
+#expert{
+	display: inline;
+	height: 100px;
+	width: 100px;
+	margin-left: 100px;
+}
+
+
+
+table {
+    height:100%; 
+    width:80%;
+    font-family: verdana, arial, sans-serif;
+    font-size: 18px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+table th {
+    height: 20px;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+    text-align: center;
+}
+table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    text-align: center;
+}

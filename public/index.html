@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="fleabay">
+	<head>
+		<title>Fleabay</title>
+		<script src="bower_components/angular/angular.min.js"></script>
+
+		<script src="app/utils.js"></script>
+		<script src="app/fleabay.js"></script>
+		<script src="app/expertsTestData.js"></script>
+		<script src="app/itemTestData.js"></script>
+		<link rel="stylesheet" href="styles/reset.css">
+		<link rel="stylesheet" href="styles/styles.css">
+
+	</head>
+
+	<body ng-controller='mainController'>
+		<div id = "banner">
+			<span id="title">Fleabay</span>
+			<span>
+				<div id="login">
+					<h3><button ng-click='signUp()'>Sign Up</button></h3>
+					<h3><button ng-click='logIn()'>Log In</button></h3>
+					<div id="logInPage">
+						<h1>Login Page goes here!</h1>
+						<h1>Login Page goes here!</h1>
+						<h1>Login Page goes here!</h1>
+					</div>
+				</div>
+			</span>
+		</div>
+
+
+		<div id="signUpPage">
+			<h1>SignUpPage Here! Need more work!</h1>
+			<div id="seller">I am a seller</div>
+			<form name="signupForm" ng-submit='signUp()'>
+			  <input type='text' ng-model='user.username' required>
+			  <input type="password" ng-model='user.password' required>
+			  <button ng-click='signUp()'>signUp</button>
+			</form>
+			<div id="expert">I am an expert</div>
+			<form name="signupForm" ng-submit='signUp()'>
+			  <input type='text' ng-model='user.username' required>
+			  <input type="password" ng-model='user.password' required>
+			  <button ng-click='signUp()'>signUp</button>
+			</form>
+		</div>
+
+		<div id="expertReview">
+			<li ng-repeat='expert in expertList'>
+				<div>
+					<table>
+						<tr><th>Name</th><th>{{expert.name}}</th></tr>
+						<tr><td>Address</td><td>{{expert.address}}</td></tr>
+						<tr><th>Profile</th><th>{{expert.profile}}</th></tr>
+						<tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
+						<tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr>
+					</table>
+				</div>
+			</li>
+		</div>
+		<div id="finalSales">
+			<table>
+				<td ng-repeat='item in itemList'>
+					<p>{{item.name}}</p>
+					<p>{{item.description}}</p>
+					<p>{{item.price}}</p>
+					<p>{{item.listdata}}</p>
+				</td>
+			</table>
+		</div>
+
+
+	</body>
+
+
+</html>
