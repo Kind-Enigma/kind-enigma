@@ -1,4 +1,15 @@
 <div class="homepage" ng-controller='mainController'>
+
+  <div id="login">
+    <h3><button ng-click='signUp()'>Sign Up</button></h3>
+    <h3><button ng-click='logIn()'>Log In</button></h3>
+    <div id="logInPage">
+      <h1>Login Page goes here!</h1>
+      <h1>Login Page goes here!</h1>
+      <h1>Login Page goes here!</h1>
+    </div>
+  </div>
+
   <div id="expertReview">
     <li ng-repeat='expert in expertList'>
       <div>
@@ -12,14 +23,20 @@
       </div>
     </li>
   </div>
+
+  <marquee behavior="scroll" direction="left">
+
   <div id="finalSales">
     <table>
       <td ng-repeat='item in itemList'>
         <p>{{item.name}}</p>
         <p>{{item.description}}</p>
         <p>{{item.price}}</p>
-        <p>{{item.listdata}}</p>
+        <p>{{item.listdate}}</p>
       </td>
     </table>
+
+  </marquee>
+  
   </div>
 </div>

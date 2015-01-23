@@ -9,11 +9,15 @@ fleabayControllers.controller('mainController', function($scope){
 });
 
 fleabayControllers.controller('userController', function($scope){
-  $scope.expertList = experts;
+  $scope.user = testUser;
   $scope.itemList = items;
+  $scope.postItem = userPostItem;
+  $scope.logOut = userLogOut;
 });
 
 fleabayControllers.controller('expertController', function($scope){
-  $scope.expertList = experts;
+  $scope.user = wayne;
   $scope.itemList = items;
+  $scope.logOut = expertLogOut;
+  $scope.acceptRequest = expertAcceptRequest;
 });
