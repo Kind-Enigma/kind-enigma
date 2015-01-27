@@ -34,7 +34,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     }).
       success(function(data, status, headers, config){
         console.log(data);
-        currentUser = data;
+        currentUser = data  ;
         $location.path('/user')
       }).
       error(function(data, status, headers, config){
@@ -48,8 +48,19 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 
 fleabayControllers.controller('userController', function($scope, $http, $location){
   $scope.user = currentUser;
+  var userCellNumber = currentUser[0].CellNumber;
+  console.log('userCellNumber ', $scope.user);
   // $scope.itemList = items;
   // $scope.postItem = userPostItem;
+  $http.get('http://localhost:8080/api/item/byuser?CellNumber=' + userCellNumber).
+      success(function(data, status, headers, config){
+        console.log('data ', data);
+        $scope.itemList = data;
+      }).
+      error(function(data, status, headers, config){
+        console.log('there is an error')
+      });
+
   $scope.postItem = function(){
     var title = $('#postItemTitle').val()
     var description = $('#postItemDescription').val()
