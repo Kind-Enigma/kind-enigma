@@ -1,0 +1,24 @@
+<div class="expertPage" ng-controller='expertController'>
+  <h1>This is the expert Page!!!</h1>
+
+  <div id='expertProfile'>
+    <span>Welcome {{user}}</span>
+  </div>
+
+  <div>
+    
+    <button ng-click='logOut()' style="width:200px;height:70px">Log Out</button>
+  </div>
+
+  <div id='userItemList'>
+    <li ng-repeat='item in itemList'>
+      <h2>{{item.name}}<h2>
+      <p>{{item.description}}</p>
+      <p>Listed Price: {{item.price}}</p>
+      <p>Listed Date: {{item.date}}</p>
+      <span>Status: {{item.status}}</span>
+      <button ng-click='acceptRequest()' style="width:200px;height:40px">Accept Request</button>
+    </li>
+  </div>
+</div>
+</div>

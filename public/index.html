@@ -3,11 +3,14 @@
 	<head>
 		<title>Fleabay</title>
 		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
 
 		<script src="app/utils.js"></script>
 		<script src="app/fleabay.js"></script>
+		<script src="app/controllers.js"></script>
 		<script src="app/expertsTestData.js"></script>
 		<script src="app/itemTestData.js"></script>
+		<script src="app/testUser.js"></script>
 		<link rel="stylesheet" href="styles/reset.css">
 		<link rel="stylesheet" href="styles/styles.css">
 
@@ -16,17 +19,8 @@
 	<body ng-controller='mainController'>
 		<div id = "banner">
 			<span id="title">Fleabay</span>
-			<span>
-				<div id="login">
-					<h3><button ng-click='signUp()'>Sign Up</button></h3>
-					<h3><button ng-click='logIn()'>Log In</button></h3>
-					<div id="logInPage">
-						<h1>Login Page goes here!</h1>
-						<h1>Login Page goes here!</h1>
-						<h1>Login Page goes here!</h1>
-					</div>
-				</div>
-			</span>
+			<h2><a ng-href='/#/user'><button>UserPage</button></a></h2>
+			<h2><a ng-href='/#/expert'><button>ExpertPage</button></a></h2>
 		</div>
 
 
@@ -46,6 +40,7 @@
 			</form>
 		</div>
 
+<<<<<<< HEAD
 		<div id="expertReview">
 			<ul class = "expertExample" ng-repeat='expert in expertList'>
 				<li class="name">{{expert.name}}</li>
@@ -75,6 +70,11 @@
 					<p>{{item.listdata}}</p>
 				</td>
 			</table>
+=======
+		<div class="view-container">
+		  <div ng-view class="view-frame">
+		</div>
+>>>>>>> 8be8ee9c58f924327858c6ee3c0903c91992d762
 		</div>
 
 

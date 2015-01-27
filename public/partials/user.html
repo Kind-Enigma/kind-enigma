@@ -1,0 +1,30 @@
+<div class="userPage" ng-controller='userController'>
+  <h1>This is the user Page!!!</h1>
+  <div id='userProfile'>
+    <span>Welcome {{user}}</span>
+  </div>
+
+  <div>
+    <button ng-click='postItem()' style="width:200px;height:70px">Post Item</button>
+    <button ng-click='logOut()' style="width:200px;height:70px">Log Out</button>
+  </div>
+
+  <div id='userItemList'>
+    <li ng-repeat='item in itemList'>
+      <h2>{{item.name}}<h2>
+      <p>{{item.description}}</p>
+      <p>Listed Price: {{item.price}}</p>
+      <p>Listed Date: {{item.date}}</p>
+      <p>Status: {{item.status}}</p>
+    </li>
+  </div>
+</div>
+
+<!-- 
+var itemB = {
+  'name':'this is itemB',
+  'description':'bbbbbbbbbbbbbbbbbbbbbbbbbb',
+  'price': 123,
+  'listdata': '12209483',
+  'status': 'Waiting'
+} -->
