@@ -18,8 +18,8 @@ var createUser = function(data, callback) {
 };
 
 var getUser = function(data, callback) {
-  //console.log("Data: ", data);
-  db.User.findOne(data, function(error, user){
+  console.log("Get user with - Data: ", data);
+  db.User.find(data, function(error, user){
     if (error || !user) {
       callback('Cannot find user', null);
     } else {
