@@ -24,7 +24,8 @@ var userSchema = mongoose.Schema({
   Email: String,
   Password: String,
   EBayUsername: String,
-  EBayRating: Number
+  EBayRating: Number,
+  Image: String
 });
 // User Model
 var User = mongoose.model('User', userSchema);
