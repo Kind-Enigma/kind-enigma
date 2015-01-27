@@ -25,6 +25,22 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
       });
   }
 
+  $scope.realSignUp = function(){
+    var signUpCellNumber = $scope.signUpCellNumber;
+    var signUpPassword = $scope.signUpPassword;
+    $http.post('http://localhost:8080/api/user', {
+      CellNumber: signUpCellNumber,
+      Password: signUpPassword
+    }).
+      success(function(data, status, headers, config){
+        console.log(data);
+        currentUser = data;
+        $location.path('/user')
+      }).
+      error(function(data, status, headers, config){
+        console.log('an error in signUp');
+      });
+  }
 
   $scope.expertList = experts;
   $scope.itemList = items;
@@ -54,10 +70,10 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
       // AcceptedDate: Date
 
     }). // database not uploaded yet
-    success(function(data, status, headers, confit){
+    success(function(data, status, headers, config){
 
     }).
-    error(function(data, status, headers, confit){
+    error(function(data, status, headers, config){
 
     });
   };
