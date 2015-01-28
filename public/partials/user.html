@@ -11,20 +11,19 @@
 
   <div>
     <form name="postItemForm">
-      <input id='postItemTitle' type='string' required>
-      <input id='postItemDescription' type="string" required>
-      <input id='postItemPrice' type="number" required>
+      <input id='postItemTitle' type='string' ng-model="itemTitle" required>
+      <input id='postItemDescription' type="string" ng-model="itemDescription" required>
+      <input id='postItemPrice' type="number" ng-model="itemPrice" required>
       <button ng-click='postItem()'>Post!</button>
     </form>
   </div>
 
   <div id='userItemList'>
     <li ng-repeat='item in itemList'>
-      <h2>{{item.name}}<h2>
-      <p>{{item.description}}</p>
-      <p>Listed Price: {{item.price}}</p>
-      <p>Listed Date: {{item.date}}</p>
-      <p>Status: {{item.status}}</p>
+      <h2>{{item.Title}}<h2>
+      <p>{{item.Description}}</p>
+      <p>{{item.ListPrice}}</p>
+      <p>{{item.ListDate}}</p>
     </li>
   </div>
 </div>

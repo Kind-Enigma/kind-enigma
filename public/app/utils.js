@@ -1,5 +1,7 @@
 var toggleSignUpPage = function(){
   var e = document.getElementById('signUpPage');
+  var k = document.getElementById('logInPage');
+  k.style.display = 'none';
   if(e.style.display == 'block'){
     e.style.display = 'none';
   } else {
@@ -9,6 +11,8 @@ var toggleSignUpPage = function(){
 
 var toggleLogInPage = function(){
   var e = document.getElementById('logInPage');
+  var k = document.getElementById('signUpPage');
+  k.style.display = 'none';
   if(e.style.display == 'block'){
     e.style.display = 'none';
   } else {
@@ -16,19 +20,22 @@ var toggleLogInPage = function(){
   }
 }
 
-var userPostItem = function(){
-  alert('Post Item!!!')
-}
+// var goHome = function(){
+//   redirectTo: '/'
+// };
+// var userPostItem = function(){
+//   alert('Post Item!!!')
+// }
 
-var userLogOut = function(){
-  alert('Loging Out User')
-}
+// var userLogOut = function(){
+//   alert('Loging Out User')
+// }
 
-var expertAcceptRequest = function(){
-  alert('Request Accepted!')
-}
+// var expertAcceptRequest = function(){
+//   alert('Request Accepted!')
+// }
 
-var expertLogOut = function(){
-  alert('Loging Out Expert')
-}
+// var expertLogOut = function(){
+//   alert('Loging Out Expert')
+// }
 
