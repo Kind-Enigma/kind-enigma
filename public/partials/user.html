@@ -11,9 +11,9 @@
 
   <div>
     <form name="postItemForm">
-      <input id='postItemTitle' type='string' required>
-      <input id='postItemDescription' type="string" required>
-      <input id='postItemPrice' type="number" required>
+      <input id='postItemTitle' type='string' ng-model="itemTitle" required>
+      <input id='postItemDescription' type="string" ng-model="itemDescription" required>
+      <input id='postItemPrice' type="number" ng-model="itemPrice" required>
       <button ng-click='postItem()'>Post!</button>
     </form>
   </div>

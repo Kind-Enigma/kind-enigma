@@ -12,12 +12,13 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     $http.get('http://localhost:8080/api/user?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
         $scope.user = data[0];
-        console.log(data[0]);
-        console.log(userPassword);
         if (data[0].Password == userPassword){
-          console.log('Password is correct')
-          currentUser = data;
-          $location.path("/user")
+          if(data[0].isExpert){
+            console.log('isanExpert');
+          }else{
+            currentUser = data;
+            $location.path("/user")
+          }
         }
       }).
       error(function(data, status, headers, config){
@@ -49,12 +50,11 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 fleabayControllers.controller('userController', function($scope, $http, $location){
   $scope.user = currentUser;
   var userCellNumber = currentUser[0].CellNumber;
-  console.log('userCellNumber ', $scope.user);
   // $scope.itemList = items;
   // $scope.postItem = userPostItem;
   $http.get('http://localhost:8080/api/item/byuser?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
-        console.log('data ', data);
+
         $scope.itemList = data;
       }).
       error(function(data, status, headers, config){
@@ -62,11 +62,11 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
       });
 
   $scope.postItem = function(){
-    var title = $('#postItemTitle').val()
-    var description = $('#postItemDescription').val()
-    var price = $('#postItemPrice').val()
-    $http.post('http://localhost:8080/api/items',{
-      Owner: $scope.user.CellNumber,
+    var title = $scope.itemTitle;
+    var description = $scope.itemDescription;
+    var price = $scope.itemPrice;
+    $http.post('http://localhost:8080/api/item',{
+      // Owner: currentUser[0].CellNumber,
       Title: title,
       Description: description,
       // Address: $scope.user.Address,
@@ -82,10 +82,10 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
 
     }). // database not uploaded yet
     success(function(data, status, headers, config){
-
+      console.log('succesfully posted an item');
     }).
     error(function(data, status, headers, config){
-
+      console.log('did not succesfully post an item');
     });
   };
   $scope.logOut = function(){
