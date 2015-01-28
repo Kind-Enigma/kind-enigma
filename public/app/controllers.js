@@ -15,9 +15,12 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
         console.log(data[0]);
         console.log(userPassword);
         if (data[0].Password == userPassword){
-          console.log('Password is correct')
-          currentUser = data;
-          $location.path("/user")
+          if(data[0].IsExpert){
+            $location.path("/expert");
+          }
+          else{
+            $location.path("/user");
+          }
         }
       }).
       error(function(data, status, headers, config){
@@ -28,18 +31,37 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $scope.realSignUp = function(){
     var signUpCellNumber = $scope.signUpCellNumber;
     var signUpPassword = $scope.signUpPassword;
-    $http.post('http://localhost:8080/api/user', {
-      CellNumber: signUpCellNumber,
-      Password: signUpPassword
-    }).
-      success(function(data, status, headers, config){
-        console.log(data);
-        currentUser = data;
-        $location.path('/user')
+    var expert = $scope.value1;
+    console.log(expert);
+    if(expert){
+      $http.post('http://localhost:8080/api/user', {
+        CellNumber: signUpCellNumber,
+        Password: signUpPassword,
+        IsExpert: true
       }).
-      error(function(data, status, headers, config){
-        console.log('an error in signUp');
-      });
+        success(function(data, status, headers, config){
+          console.log(data);
+          currentUser = data;
+          $location.path('/expert')
+        }).
+        error(function(data, status, headers, config){
+          console.log('an error in signUp');
+        });
+    }
+    else{
+      $http.post('http://localhost:8080/api/user', {
+        CellNumber: signUpCellNumber,
+        Password: signUpPassword,
+      }).
+        success(function(data, status, headers, config){
+          console.log(data);
+          currentUser = data;
+          $location.path('/user')
+        }).
+        error(function(data, status, headers, config){
+          console.log('an error in signUp');
+        });
+    }
   }
 
   $scope.expertList = experts;

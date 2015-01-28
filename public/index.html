@@ -25,11 +25,11 @@
 
 
 		<div id="signUpPage">
-			<h1>SignUpPage Here! Need more work!</h1>
-			<div id="seller">I am a seller</div>
+			<h1>SignUpPage Here!</h1>
 			<form name="signupForm" ng-submit='signUp()'>
 			  <input type='text' ng-model='signUpCellNumber' required>
 			  <input type="password" ng-model='signUpPassword' required>
+			  <input type="checkbox" ng-model="value1"> Expert?</input>
 			  <button ng-click='realSignUp()'>signUp</button>
 			</form>
 			<!-- <div id="expert">I am an expert</div> -->
@@ -39,6 +39,7 @@
 			  <!- <button ng-click='realSignUp()'>signUp</button> -->
 			<!-- </form> --> 
 		</div>
+
 
 		<div class="view-container">
 		  <div ng-view class="view-frame">
