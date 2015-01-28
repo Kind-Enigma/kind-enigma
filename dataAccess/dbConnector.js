@@ -25,7 +25,11 @@ var userSchema = mongoose.Schema({
   Password: String,
   EBayUsername: String,
   EBayRating: Number,
-  Image: String
+  Image: String,
+  IsExpert: {
+    type: Boolean,
+    default: false
+  }
 });
 // User Model
 var User = mongoose.model('User', userSchema);

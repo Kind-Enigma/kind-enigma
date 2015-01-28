@@ -9,6 +9,15 @@
     <button ng-click='logOut()' style="width:200px;height:70px">Log Out</button>
   </div>
 
+  <div>
+    <form name="postItemForm">
+      <input id='postItemTitle' type='string' required>
+      <input id='postItemDescription' type="string" required>
+      <input id='postItemPrice' type="number" required>
+      <button ng-click='postItem()'>Post!</button>
+    </form>
+  </div>
+
   <div id='userItemList'>
     <li ng-repeat='item in itemList'>
       <h2>{{item.name}}<h2>
@@ -19,12 +28,3 @@
     </li>
   </div>
 </div>
-
-<!-- 
-var itemB = {
-  'name':'this is itemB',
-  'description':'bbbbbbbbbbbbbbbbbbbbbbbbbb',
-  'price': 123,
-  'listdata': '12209483',
-  'status': 'Waiting'
-} -->
