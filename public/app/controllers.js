@@ -63,7 +63,6 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
         });
     }
   }
-
   $scope.expertList = experts;
   $scope.itemList = items;
 });
@@ -76,7 +75,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     var title = $('#postItemTitle').val()
     var description = $('#postItemDescription').val()
     var price = $('#postItemPrice').val()
-    $http.post('http://localhost:8080/api/items',{
+    $http.post('http://localhost:8080/api/item',{
       Owner: $scope.user.CellNumber,
       Title: title,
       Description: description,
@@ -107,9 +106,12 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
   // $scope.logOut = userLogOut;
 });
 
-fleabayControllers.controller('expertController', function($scope){
-  $scope.user = wayne;
-  $scope.itemList = items;
-  $scope.logOut = expertLogOut;
-  $scope.acceptRequest = expertAcceptRequest;
+fleabayControllers.controller('expertController', function($scope, $http){
+  $http.get('http://localhost:8080/api/item')
+    .success(function(data, status, headers, config){
+      $scope.items = data;
+    })
+    .error(function(data, status, headers, config){
+      console.log('error getting data');
+    })
 });
