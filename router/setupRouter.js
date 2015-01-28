@@ -114,6 +114,25 @@ router.get('/users', function(request, response){
   response.end("10 users added");
 
   })
+  .get('/experts', function(request, response){
+    //console.log("Routing to get with params:", request.query);
+
+    for (var i = 0; i < 5; i++) {
+      getUser(function(user){
+        user.IsExpert = true;
+        user.save(function(error, user){
+          if (error) {
+            console.log("Error creating user:", error)
+          } else {
+            console.log("User: ", user._id, " created");
+          }
+        });
+      });
+    }
+
+    response.end("5 expert users added");
+
+  })
   .get('/items', function(request, response){
     console.log("Reading: ", jsonDataFileName);
     fs.readFile(jsonDataFileName, 'utf8', function(error, stringData) {
