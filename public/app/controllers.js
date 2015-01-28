@@ -15,10 +15,12 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
         console.log(data[0]);
         console.log(userPassword);
         if (data[0].Password == userPassword){
-          if(data[0].is)
-          console.log('Password is correct')
-          currentUser = data;
-          $location.path("/user")
+          if(data[0].IsExpert){
+            $location.path("/expert");
+          }
+          else{
+            $location.path("/user");
+          }
         }
       }).
       error(function(data, status, headers, config){
@@ -35,7 +37,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
       $http.post('http://localhost:8080/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,
-        isExpert: true
+        IsExpert: true
       }).
         success(function(data, status, headers, config){
           console.log(data);
