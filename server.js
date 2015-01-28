@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var apiRouter = require('./router/apiRouter');
 
 var app = express();
+var port = process.env.PORT || 1337;
+
 
 
 
@@ -17,6 +19,6 @@ app.use('/api', apiRouter);
 
 
 
-var server = app.listen(8080, function(){
+var server = app.listen(port, function(){
   console.log("Listening on " + server.address().address + " port " + server.address().port);
 });
