@@ -20,7 +20,8 @@ var createItem = function(data, callback){
 var getItems = function(data, callback){
   //console.log('Find item where:', data);
   db.Item.find(data)
-    .populate('Owner', 'First Last CellNumber')     // load user item
+    .populate('Owner')
+    //.populate('Owner', 'First Last CellNumber')     // load user item
     .exec(function(error, items){
       if (error || items.length === 0) {
         callback('Item not found');

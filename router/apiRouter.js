@@ -5,14 +5,24 @@ var dbItem = require('../dataAccess/itemRepository');
 
 router.get('/user', function(request, response){
   console.log("Routing to get with params:", request.query);
-  dbUser.getUser(request.query, function(error, user){
-    if (error) {
-      response.status(404).end(error);
-    } else {
-      response.json(user);
-    }
-  });
-})
+    dbUser.getUser(request.query, function(error, user){
+      if (error) {
+        response.status(404).end(error);
+      } else {
+        response.json(user);
+      }
+    });
+  })
+  .get('/user/getUserItems', function(request, response){
+    dbUser.getUserItems(request.query, function(error, items){
+      if (error) {
+        response.status(404);
+        response.end("User items not found");
+      } else {
+        response.json(items);
+      }
+    })
+  })
   .post('/user', function(request, response){
     dbUser.createUser(request.body, function(error, user){
       if (error) {
