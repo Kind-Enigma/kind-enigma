@@ -11,12 +11,16 @@
   </div>
 
   <div id='userItemList'>
-    <li ng-repeat='item in itemList'>
-      <h2>{{item.name}}<h2>
-      <p>{{item.description}}</p>
-      <p>Listed Price: {{item.price}}</p>
-      <p>Listed Date: {{item.date}}</p>
-      <span>Status: {{item.status}}</span>
+    <label>Search by Price</label><input type="text" name="price" ng-model="price"></input>
+    <br>
+    <br>
+    <li ng-repeat='item in items | filter: price'>
+      <h2>{{item.Title}}<h2>
+      <p>{{item.Description}}</p>
+      <p>Listed Price: {{item.ListPrice}}</p>
+      <p>Listed Date: {{item.ListDate}}</p>
+      <p>Zip Code: {{item.ZipCode}}</p>
+      <span>Accepted Date: {{item.AcceptedDate}}</span>
       <button ng-click='acceptRequest()' style="width:200px;height:40px">Accept Request</button>
     </li>
   </div>

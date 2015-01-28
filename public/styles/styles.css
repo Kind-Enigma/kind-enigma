@@ -56,6 +56,17 @@ body {
 	margin-left: 100px;
 }
 
+.expertExample {
+	border-radius: 30%;
+	background-color: blue;
+	margin: auto;
+	margin-top: 20px;
+	padding: 30px;
+	width: 70%;
+	height: 100px;
+	text-align: right;
+
+}
 
 
 table {
