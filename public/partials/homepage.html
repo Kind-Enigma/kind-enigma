@@ -1,18 +1,36 @@
 <div class="homepage" ng-controller='mainController'>
 
-  <div id="login">
-    <h3><button ng-click='signUp()'>Sign Up</button></h3>
-    <h3><button ng-click='logIn()'>Log In</button></h3>
+  <p id="login">
+    <h3><button ng-click='signUp()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button></h3>
+  </p>
+  <div id="signUpPage">
+    <form name="signupForm" ng-submit='signUp()'>
+      <input type='text' ng-model='signUpCellNumber' style="height:20px" required>
+      <input type="password" ng-model='signUpPassword' style="height:20px" required>
+      <button ng-click='realSignUp()' style="width:100px;height:30px">SignUp</button>
+    </form>
   </div>
-
   <div id="logInPage">
     <form name="logInForm">
-      <input id='logInCellNumber' type='string' ng-model="userCellNumber" required>
-      <input id='logInPassword' type="string" ng-model="userPassword" required>
-      <button ng-click='realLogIn()'>Real Log In</button>
+      <input id='logInCellNumber' type='string' ng-model="userCellNumber" style="height:20px" required>
+      <input id='logInPassword' type="string" ng-model="userPassword" style="height:20px" required>
+      <button ng-click='realLogIn()' style="width:100px;height:30px">Log In</button>
     </form>
   </div>
 
+  <div id="finalSales">
+    <!-- <marquee behavior="scroll" direction="left"> -->
+      <table>
+        <td ng-repeat='item in itemList'>
+          <p>{{item.name}}</p>
+          <p>{{item.description}}</p>
+          <p>{{item.price}}</p>
+          <p>{{item.listdate}}</p>
+        </td>
+      </table>
+    <!-- </marquee> -->
+  </div>
+  
   <div id="expertReview">
     <li ng-repeat='expert in expertList'>
       <div>
@@ -27,19 +45,7 @@
     </li>
   </div>
 
-  <marquee behavior="scroll" direction="left">
 
-  <div id="finalSales">
-    <table>
-      <td ng-repeat='item in itemList'>
-        <p>{{item.name}}</p>
-        <p>{{item.description}}</p>
-        <p>{{item.price}}</p>
-        <p>{{item.listdate}}</p>
-      </td>
-    </table>
 
-  </marquee>
   
-  </div>
 </div>

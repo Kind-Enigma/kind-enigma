@@ -4,6 +4,10 @@ var currentUser = {};
 fleabayControllers.controller('mainController', function($scope, $location, $http){
   $scope.signUp = toggleSignUpPage;
   $scope.logIn = toggleLogInPage;
+  $scope.goToHomePage = function(){
+    console.log("function called!!!!")
+    $location.path("/")
+  };
 
   $scope.realLogIn = function(){
     var userCellNumber = $scope.userCellNumber;

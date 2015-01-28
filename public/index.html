@@ -18,22 +18,8 @@
 
 	<body ng-controller='mainController'>
 		<div id = "banner">
-			<span id="title">Fleabay</span>
-			<h2><a ng-href='/#/user'><button>UserPage</button></a></h2>
-			<h2><a ng-href='/#/expert'><button>ExpertPage</button></a></h2>
+			<div id="title" ng-click='goToHomePage()'>FleaBay</div>
 		</div>
-
-
-		<div id="signUpPage">
-			<h1>SignUpPage Here! Need more work!</h1>
-			<div id="seller">I am a seller</div>
-			<form name="signupForm" ng-submit='signUp()'>
-			  <input type='text' ng-model='signUpCellNumber' required>
-			  <input type="password" ng-model='signUpPassword' required>
-			  <button ng-click='realSignUp()'>signUp</button>
-			</form>
-		</div>
-
 
 		<div class="view-container">
 		  <div ng-view class="view-frame">

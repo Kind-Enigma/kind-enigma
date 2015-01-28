@@ -1,34 +1,44 @@
+body {
+    background-image: url("123.jpg");
+    /*background-color: #cccccc;*/
+}
+
 #banner{
-	background-color: #AFBF3F;
-	height: 150px;
+    /*background-image: url("123.jpg");*/
+	/*background-color: #AFBF3F;*/
+	height: 70px;
 	opacity: 70%;
 }
 
 #title{
+    text-decoration: none !important;
 	color: white;
-	font-size: 60px;
+	font-size: 80px;
 }
-
+/*
 #expertList{
-	background-color: green;
+}*/
 
-}
-
-#options{
+/*#options{
 	height: 150px;
-}
+}*/
 
-#login{
-	margin-top: 10px;
-	float: right;
+/*#login{
+    padding: 7px;
+}*/
+
+#finalSales{
+    padding-top: 7px;
 }
 
 #signUpPage{
 	display: none;
+    padding-top: 7px;
 }
 
 #logInPage{
 	display: none;
+    padding-top: 7px;
 }
 
 #seller{
