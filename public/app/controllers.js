@@ -17,19 +17,16 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
       success(function(data, status, headers, config){
         $scope.user = data[0];
         if (data[0].Password == userPassword){
-<<<<<<< HEAD
           if(data[0].isExpert){
             console.log('isanExpert');
           }else{
             currentUser = data;
             $location.path("/user")
-=======
-          if(data[0].IsExpert){
-            $location.path("/expert");
-          }
-          else{
-            $location.path("/user");
->>>>>>> 6f7ed0d9a8d1f4ff02c35eae82ebf24821e184a2
+            if(data[0].IsExpert){
+              $location.path("/expert");
+            } else {
+              $location.path("/user");
+            }
           }
         }
       }).
@@ -41,48 +38,45 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $scope.realSignUp = function(){
     var signUpCellNumber = $scope.signUpCellNumber;
     var signUpPassword = $scope.signUpPassword;
-<<<<<<< HEAD
     $http.post('http://localhost:8080/api/user', {
       CellNumber: signUpCellNumber,
       Password: signUpPassword
     }).
       success(function(data, status, headers, config){
         console.log(data);
-        currentUser = data  ;
+        currentUser = data;
         $location.path('/user')
-=======
-    var expert = $scope.value1;
-    console.log(expert);
-    if(expert){
-      $http.post('http://localhost:8080/api/user', {
-        CellNumber: signUpCellNumber,
-        Password: signUpPassword,
-        IsExpert: true
->>>>>>> 6f7ed0d9a8d1f4ff02c35eae82ebf24821e184a2
-      }).
-        success(function(data, status, headers, config){
-          console.log(data);
-          currentUser = data;
-          $location.path('/expert')
-        }).
-        error(function(data, status, headers, config){
-          console.log('an error in signUp');
-        });
-    }
-    else{
-      $http.post('http://localhost:8080/api/user', {
-        CellNumber: signUpCellNumber,
-        Password: signUpPassword,
-      }).
-        success(function(data, status, headers, config){
-          console.log(data);
-          currentUser = data;
-          $location.path('/user')
-        }).
-        error(function(data, status, headers, config){
-          console.log('an error in signUp');
-        });
-    }
+        var expert = $scope.value1;
+        console.log(expert);
+        if(expert){
+          $http.post('http://localhost:8080/api/user', {
+            CellNumber: signUpCellNumber,
+            Password: signUpPassword,
+            IsExpert: true
+          }).
+            success(function(data, status, headers, config){
+              console.log(data);
+              currentUser = data;
+              $location.path('/expert')
+            }).
+            error(function(data, status, headers, config){
+              console.log('an error in signUp');
+            });
+        } else { 
+          $http.post('http://localhost:8080/api/user', {
+            CellNumber: signUpCellNumber,
+            Password: signUpPassword,
+          }).
+            success(function(data, status, headers, config){
+              console.log(data);
+              currentUser = data;
+              $location.path('/user')
+            }).
+            error(function(data, status, headers, config){
+              console.log('an error in signUp');
+            });
+          }
+      })
   }
   $scope.expertList = experts;
   $scope.itemList = items;
@@ -103,19 +97,11 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
       });
 
   $scope.postItem = function(){
-<<<<<<< HEAD
     var title = $scope.itemTitle;
     var description = $scope.itemDescription;
     var price = $scope.itemPrice;
     $http.post('http://localhost:8080/api/item',{
       // Owner: currentUser[0].CellNumber,
-=======
-    var title = $('#postItemTitle').val()
-    var description = $('#postItemDescription').val()
-    var price = $('#postItemPrice').val()
-    $http.post('http://localhost:8080/api/item',{
-      Owner: $scope.user.CellNumber,
->>>>>>> 6f7ed0d9a8d1f4ff02c35eae82ebf24821e184a2
       Title: title,
       Description: description,
       // Address: $scope.user.Address,
