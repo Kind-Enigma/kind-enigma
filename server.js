@@ -9,7 +9,7 @@ var port = process.env.PORT || 1337;
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'example.com');
+  res.header('Access-Control-Allow-Origin', 'http://karmatest1.azurewebsites.net/');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
 
