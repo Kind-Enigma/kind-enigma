@@ -4,7 +4,6 @@
 		<title>Fleabay</title>
 		<script src="bower_components/angular/angular.min.js"></script>
 		<script src="bower_components/angular-route/angular-route.min.js"></script>
-		<!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 		<script src="app/utils.js"></script>
 		<script src="app/fleabay.js"></script>
 		<script src="app/controllers.js"></script>
@@ -18,26 +17,9 @@
 
 	<body ng-controller='mainController'>
 		<div id = "banner">
-			<span id="title">Fleabay</span>
-			<h2><a ng-href='/#/user'><button>UserPage</button></a></h2>
-			<h2><a ng-href='/#/expert'><button>ExpertPage</button></a></h2>
-		</div>
 
+			<div id="title" ng-click='goToHomePage()'>FleaBay</div>
 
-		<div id="signUpPage">
-			<h1>SignUpPage Here!</h1>
-			<form name="signupForm" ng-submit='signUp()'>
-			  <input type='text' ng-model='signUpCellNumber' required>
-			  <input type="password" ng-model='signUpPassword' required>
-			  <input type="checkbox" ng-model="value1"> Expert?</input>
-			  <button ng-click='realSignUp()'>signUp</button>
-			</form>
-			<!-- <div id="expert">I am an expert</div> -->
-<!-- 			<form name="signupForm" ng-submit='signUp()'>
-			  <input type='text' ng-model='userCellNumber' required>
-			  <input type="password" ng-model='userPassword' required>
-			  <!- <button ng-click='realSignUp()'>signUp</button> -->
-			<!-- </form> --> 
 		</div>
 
 
