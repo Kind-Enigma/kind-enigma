@@ -9,6 +9,30 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     $location.path("/")
   };
 
+  //get some items to show on front page
+  $http.get('http://localhost:8080/api/item').
+    success(function(data, status, headers, config){
+      $scope.itemList = data.slice(0, 5);
+    }).
+    error(function(data, status, headers, config){
+      console.log('could not pull data down');
+    });
+    $scope.expertList = [];
+    //get some experts to show on front page
+    $http.get('http://localhost:8080/api/user').
+      success(function(data, status, headers, config){
+        for(var i = 0; i < data.length; i++){
+          console.log(data[i]);
+          if(data[i].IsExpert === true) $scope.expertList.push(data[i]);
+        }
+        console.log($scope.expertList);
+      }).
+      error(function(data, status, headers, config){
+        console.log('could not pull data down');
+      });
+
+
+
   $scope.realLogIn = function(){
     var userCellNumber = $scope.userCellNumber;
     var userPassword = $scope.userPassword;
@@ -78,8 +102,6 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
           }
       })
   }
-  $scope.expertList = experts;
-  $scope.itemList = items;
 });
 
 fleabayControllers.controller('userController', function($scope, $http, $location){

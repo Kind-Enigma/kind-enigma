@@ -7,7 +7,7 @@
     <form name="signupForm" ng-submit='signUp()'>
       <input type='text' ng-model='signUpCellNumber' style="height:20px" required>
       <input type="password" ng-model='signUpPassword' style="height:20px" required>
-      <input type="checkbox" ng-model="value1" style="height:20px"> Expert?</input>
+      <input type="checkbox" ng-model="value1" style="height:20px"> Expert? </input>
       <button ng-click='realSignUp()' style="width:100px;height:30px">SignUp</button>
     </form>
   </div>
@@ -23,11 +23,11 @@
     <!-- <marquee behavior="scroll" direction="left"> -->
       <table>
         <td ng-repeat='item in itemList'>
-          <p>{{item.name}}</p>
-          <p>{{item.description}}</p>
-          <p>{{item.price}}</p>
-          <p>{{item.listdate}}</p>
-        </td>
+          <p>{{item.Title}}</p>
+          <!-- <p>{{item.Description}}</p> -->
+          <p>{{item.ListPrice}}</p>
+<!--           <p>{{item.Lispate}}</p>
+ -->        </td>
       </table>
     <!-- </marquee> -->
   </div>
@@ -36,11 +36,11 @@
     <li ng-repeat='expert in expertList'>
       <div>
         <table>
-          <tr><th>Name</th><th>{{expert.name}}</th></tr>
-          <tr><td>Address</td><td>{{expert.address}}</td></tr>
-          <tr><th>Profile</th><th>{{expert.profile}}</th></tr>
+          <tr><th>First Name</th><th>{{expert.First}}</th></tr>
+          <tr><td>Last Name</td><td>{{expert.Last}}</td></tr>
+<!--           <tr><th>Profile</th><th>{{expert.profile}}</th></tr>
           <tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
-          <tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr>
+          <tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr> -->
         </table>
       </div>
     </li>
