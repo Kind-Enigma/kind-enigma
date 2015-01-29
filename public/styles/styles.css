@@ -2,12 +2,28 @@ body {
     background-image: url("123.jpg");
     /*background-color: #cccccc;*/
 }
+#checkbox{
+    color: white;
+    height: 30px;
+    width: 400px;
+    padding-top: 10px;
+    margin-top: 12px;
+}
+
+.signupPageForms{
+    height: 30px;
+    width: 400px;
+    padding-top: 10px;
+    margin-top: 12px;
+    font-size: 20px;
+}
 
 #banner{
     /*background-image: url("123.jpg");*/
 	/*background-color: #AFBF3F;*/
 	height: 70px;
 	opacity: 70%;
+    margin-bottom: 12px
 }
 
 #title{
