@@ -11,8 +11,6 @@ var toggleSignUpPage = function(){
 
 var toggleLogInPage = function(){
   var e = document.getElementById('logInPage');
-  var k = document.getElementById('signUpPage');
-  k.style.display = 'none';
   if(e.style.display == 'block'){
     e.style.display = 'none';
   } else {

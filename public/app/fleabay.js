@@ -15,6 +15,10 @@ fleabay.config(['$routeProvider',
         templateUrl: 'partials/expert.html',
         controller: 'expertController'
       }).
+      when('/signup', {
+        templateUrl: 'partials/signup.html',
+        controller: 'signupController'
+      }).
       when('/', {
        templateUrl: 'partials/homepage.html',
        controller: 'mainController'
