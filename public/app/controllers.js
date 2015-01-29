@@ -5,8 +5,11 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $scope.signUp = toggleSignUpPage;
   $scope.logIn = toggleLogInPage;
   $scope.goToHomePage = function(){
-    console.log("function called!!!!")
     $location.path("/")
+  }; 
+
+  $scope.directToSignUpPage = function(){
+    $location.path("/signup")
   };
 
   $scope.realLogIn = function(){
@@ -35,49 +38,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
       });
   }
 
-  $scope.realSignUp = function(){
-    var signUpCellNumber = $scope.signUpCellNumber;
-    var signUpPassword = $scope.signUpPassword;
-    $http.post('http://localhost:8080/api/user', {
-      CellNumber: signUpCellNumber,
-      Password: signUpPassword
-    }).
-      success(function(data, status, headers, config){
-        console.log(data);
-        currentUser = data;
-        $location.path('/user')
-        var expert = $scope.value1;
-        console.log(expert);
-        if(expert){
-          $http.post('http://localhost:8080/api/user', {
-            CellNumber: signUpCellNumber,
-            Password: signUpPassword,
-            IsExpert: true
-          }).
-            success(function(data, status, headers, config){
-              console.log(data);
-              currentUser = data;
-              $location.path('/expert')
-            }).
-            error(function(data, status, headers, config){
-              console.log('an error in signUp');
-            });
-        } else { 
-          $http.post('http://localhost:8080/api/user', {
-            CellNumber: signUpCellNumber,
-            Password: signUpPassword,
-          }).
-            success(function(data, status, headers, config){
-              console.log(data);
-              currentUser = data;
-              $location.path('/user')
-            }).
-            error(function(data, status, headers, config){
-              console.log('an error in signUp');
-            });
-          }
-      })
-  }
+
   $scope.expertList = experts;
   $scope.itemList = items;
 });
@@ -139,4 +100,39 @@ fleabayControllers.controller('expertController', function($scope, $http){
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
+});
+
+fleabayControllers.controller('signUpController', function($scope, $http){
+  $scope.realSignUp = function(){
+    var signUpCellNumber = $scope.signUpCellNumber;
+    var signUpPassword = $scope.signUpPassword;
+    
+    var expert = $scope.value1;
+    if(expert){
+      $http.post('http://localhost:8080/api/user', {
+        CellNumber: signUpCellNumber,
+        Password: signUpPassword,
+        IsExpert: true
+      }).
+        success(function(data, status, headers, config){
+          currentUser = data;
+          $location.path('/expert')
+        }).
+        error(function(data, status, headers, config){
+          console.log('an error in signUp');
+        });
+    } else { 
+      $http.post('http://localhost:8080/api/user', {
+        CellNumber: signUpCellNumber,
+        Password: signUpPassword,
+      }).
+        success(function(data, status, headers, config){
+          currentUser = data;
+          $location.path('/user')
+        }).
+        error(function(data, status, headers, config){
+          console.log('an error in signUp');
+        });
+    }
+  }
 });

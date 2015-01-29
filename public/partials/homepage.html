@@ -1,16 +1,16 @@
 <div class="homepage" ng-controller='mainController'>
 
   <p id="login">
-    <h3><button ng-click='signUp()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button></h3>
+    <h3><button ng-click='directToSignUpPage()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button></h3>
   </p>
-  <div id="signUpPage">
+<!--   <div id="signUpPage">
     <form name="signupForm" ng-submit='signUp()'>
       <input type='text' ng-model='signUpCellNumber' style="height:20px" required>
       <input type="password" ng-model='signUpPassword' style="height:20px" required>
       <input type="checkbox" ng-model="value1" style="height:20px"> Expert?</input>
-      <button ng-click='realSignUp()' style="width:100px;height:30px">SignUp</button>
+      <button ng-click='directToSignUpPage()' style="width:100px;height:30px">SignUp</button>
     </form>
-  </div>
+  </div> -->
   <div id="logInPage">
     <form name="logInForm">
       <input id='logInCellNumber' type='string' ng-model="userCellNumber" style="height:20px" required>
