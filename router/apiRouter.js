@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var dbUser = require('../dataAccess/userRepository');
-var dbItem = require('../dataAccess/itemRepository');
+var dbUser = require('../dataAccess/userController');
+var dbItem = require('../dataAccess/itemController');
 
 router.get('/user', function(request, response){
   console.log("Routing to get with params:", request.query);

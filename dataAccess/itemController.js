@@ -1,4 +1,4 @@
-var db = require('./dbConnector');
+var db = require('./dbModels');
 
 var createItem = function(data, callback){
   db.Item.findOne(data, function(error, item){
@@ -12,16 +12,30 @@ var createItem = function(data, callback){
 
       });
     } else {
-      callback('Item exists', null);
+      //callback('Item exists', null);
+      for (var key in data) {
+        item[key] = data[key];
+      }
+      item.save(function(error, data){
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, item);
+        }
+      });
     }
   });
 };
 
 var getItems = function(data, callback){
   //console.log('Find item where:', data);
+  // this regex matchng allows for partial matches to be found
+  for (var key in data) {
+    data[key] = new RegExp(data[key], 'i');
+  }
   db.Item.find(data)
     .populate('Owner')
-    //.populate('Owner', 'First Last CellNumber')     // load user item
+    //.populate('Owner', 'First Last CellNumber')     // load user item with these fields only
     .exec(function(error, items){
       if (error || items.length === 0) {
         callback('Item not found');

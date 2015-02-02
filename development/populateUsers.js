@@ -1,5 +1,5 @@
-var db = require('../dataAccess/dbConnector');
-var dbUser = require('../dataAccess/userRepository');
+var db = require('../dataAccess/dbModels');
+
 var http = require('http');
 
 
@@ -7,15 +7,24 @@ var toTitleCase = function(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
 
-var addDemoUsers = function(number) {
+var getUser = function(callback) {
   loadPage({ host: 'api.randomuser.me'}, function(data){
     var user = parseUser(JSON.parse(data).results[0].user);
     console.log(user);
+    callback(user);
   });
 };
 
 var parseUser = function(user) {
   //console.log(user);
+
+  // get photo
+  var fileName = Math.random().toString(36).slice(2) + ".jpg";
+  var file = fs.createWriteStream(__dirname + '/../public/images/' + fileName);
+  var request = http.get(user.picture.large, function(response){
+    response.pipe(file);
+  });
+
   newUser = new db.User({
     First: toTitleCase(user.name.first),
     Last: toTitleCase(user.name.last),
@@ -25,7 +34,8 @@ var parseUser = function(user) {
     State: toTitleCase(user.location.state),
     ZipCode: user.location.zip,
     Email: user.email,
-    Password: user.password
+    Password: user.password,
+    Image: fileName
   });
   return newUser;
 };
@@ -42,4 +52,6 @@ var loadPage = function(host, callback) {
   }).end();
 };
 
-addDemoUsers(1);
+var u = getUser();
+
+module.exports.getUser = getUser;
