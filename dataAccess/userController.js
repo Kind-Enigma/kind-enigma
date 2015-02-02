@@ -1,6 +1,10 @@
-var db = require('./dbConnector');
+var db = require('./dbModels');
 
 var createUser = function(data, callback) {
+  // coercive check tests for null and undefined!!!
+  if (data.CellNumber != null) {
+    data.CellNumber = cleanCellNumber(data.CellNumber);
+  }
   db.User.findOne(data, function(error, user){
     //console.log(">>", error, user);
     if (error || !user) {
@@ -12,7 +16,18 @@ var createUser = function(data, callback) {
           }
         });
     } else {
-      callback('User already exists', null);
+      //callback('User already exists', null);
+      // update that user!!
+      for (var key in data) {
+        user[key] = data[key];
+      }
+      user.save(function(error, data){
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, user);
+        }
+      });
     }
   });
 };

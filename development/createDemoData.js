@@ -2,13 +2,18 @@
 
 var fs = require('fs');
 var http = require('http');
-var db = require('../dataAccess/dbConnector');
-var dbUser = require('../dataAccess/userRepository');
+var db = require('../dataAccess/dbModels');
+var dbUser = require('../dataAccess/userController');
 
 var jsonDataFileName = __dirname + '/item.json';
 
 
-
+var cleanCellNumber = function(object) {
+  if (object.CellNumber != null) {
+    // remove non number from cell numbers
+    object.CellNumber = object.CellNumber.replace(/[^\d]/g,'');
+  }
+};
 
 
 
@@ -66,7 +71,7 @@ var parseUser = function(user) {
   var newUser = new db.User({
     First: toTitleCase(user.name.first),
     Last: toTitleCase(user.name.last),
-    CellNumber: user.cell,
+    CellNumber: cleanCellNumber(user.cell),
     Address: toTitleCase(user.location.street),
     City: toTitleCase(user.location.city),
     State: toTitleCase(user.location.state),

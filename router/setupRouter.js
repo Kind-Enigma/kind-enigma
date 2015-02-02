@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var dbUser = require('../dataAccess/userRepository');
-var dbItem = require('../dataAccess/itemRepository');
+var dbUser = require('../dataAccess/userController');
+var dbItem = require('../dataAccess/itemController');
 var http = require('http');
 
 var fs = require('fs');
-var db = require('../dataAccess/dbConnector');
+var db = require('../dataAccess/dbModels');
 
 var jsonDataFileName = __dirname + '/../development/item.json';
 
@@ -147,6 +147,7 @@ router.get('/users', function(request, response){
 
       dbUser.getUser({}, function(error, AllUsers) {
         for (var i = 0; i < items.length; i++) {
+          // pick a random user
           AllUsers = shuffle(AllUsers);
           items[i].Owner = AllUsers[0]._id;
           items[i].save(function(error, user){
