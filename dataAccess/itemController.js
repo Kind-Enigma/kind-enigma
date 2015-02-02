@@ -1,7 +1,11 @@
 var db = require('./dbModels');
 
 var createItem = function(data, callback){
-  db.Item.findOne(data, function(error, item){
+  var findData = {};
+  if (data._id != null) {
+    findData._id = data._id;
+  }
+  db.Item.findOne(findData, function(error, item){
     if (error || !item) {     // item does not exist
       var item = new db.Item(data).save(function(error, item){
         if (error) {
@@ -31,7 +35,9 @@ var getItems = function(data, callback){
   //console.log('Find item where:', data);
   // this regex matchng allows for partial matches to be found
   for (var key in data) {
-    data[key] = new RegExp(data[key], 'i');
+    if (key !== '_id') {
+      data[key] = new RegExp(data[key], 'i');
+    }
   }
   db.Item.find(data)
     .populate('Owner')
@@ -45,23 +51,27 @@ var getItems = function(data, callback){
   });
 };
 
-var getItemByUser = function(data, callback){
-  //console.log('Find item by this user:', data);
-  db.User.findOne(data, function(error, user) {
-    if (error || !user) {
-      callback('Cannot find user');
-    } else {
-      console.log('Finding items for user:', user);
-      db.Item.find({ Owner: user._id }, function (error, items) {
-        if (error || items.length === 0) {
-          callback('No items found');
-        } else {
-          callback(null, items);
-        }
-      });
-    }
-  });
-};
+
+// Duplicate work ... function implemented as getUserItems in User Controller
+
+
+//var getItemByUser = function(data, callback){
+//  //console.log('Find item by this user:', data);
+//  db.User.findOne(data, function(error, user) {
+//    if (error || !user) {
+//      callback('Cannot find user');
+//    } else {
+//      console.log('Finding items for user:', user);
+//      db.Item.find({ Owner: user._id }, function (error, items) {
+//        if (error || items.length === 0) {
+//          callback('No items found');
+//        } else {
+//          callback(null, items);
+//        }
+//      });
+//    }
+//  });
+//};
 
 var createItemByUser = function(data, callback) {
   console.log("Create item by user ...");
@@ -83,5 +93,5 @@ var createItemByUser = function(data, callback) {
 
 module.exports.createItem = createItem;
 module.exports.getItems = getItems;
-module.exports.getItemsByUser = getItemByUser;
+//module.exports.getItemsByUser = getItemByUser;
 module.exports.createItemByUser = createItemByUser;
