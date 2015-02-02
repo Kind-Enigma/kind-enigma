@@ -1,6 +1,8 @@
 var db = require('./dbModels');
 
 var createUser = function(data, callback) {
+
+  // this removes non-numerics from a telephone number ... removed for demo because seed data contains non-numerics
   // coercive check tests for null and undefined!!!
   //if (data.CellNumber != null) {
   //  data.CellNumber = cleanCellNumber(data.CellNumber);
@@ -10,6 +12,8 @@ var createUser = function(data, callback) {
     findData._id = data._id;
   } else if (data.CellNumber != null) {
     findData.CellNumber = data.CellNumber;
+  } else {
+    findData = data;
   }
   db.User.findOne(findData, function(error, user){
     //console.log(">>", error, user);
