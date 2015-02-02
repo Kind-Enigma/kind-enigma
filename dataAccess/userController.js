@@ -2,10 +2,16 @@ var db = require('./dbModels');
 
 var createUser = function(data, callback) {
   // coercive check tests for null and undefined!!!
-  if (data.CellNumber != null) {
-    data.CellNumber = cleanCellNumber(data.CellNumber);
+  //if (data.CellNumber != null) {
+  //  data.CellNumber = cleanCellNumber(data.CellNumber);
+  //}
+  var findData = {};
+  if (data._id != null) {
+    findData._id = data._id;
+  } else if (data.CellNumber != null) {
+    findData.CellNumber = data.CellNumber;
   }
-  db.User.findOne(data, function(error, user){
+  db.User.findOne(findData, function(error, user){
     //console.log(">>", error, user);
     if (error || !user) {
       var user = new db.User(data).save(function(error, user){
