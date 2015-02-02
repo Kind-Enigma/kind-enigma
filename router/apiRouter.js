@@ -58,6 +58,26 @@ router.get('/user', function(request, response){
         response.json(item);
       }
     });
+  })
+  .get('/item/sold', function(request, response){
+    dbItem.getSoldItems(null, function(error, items){
+      if (error) {
+        response.status(404).send(error);
+      } else {
+        response.json(items);
+      }
+
+    });
+  })
+  .get('/item/unsold', function(request, response){
+    dbItem.getUnsoldItems(null, function(error, items){
+      if (error) {
+        response.status(404).send(error);
+      } else {
+        response.json(items);
+      }
+
+    });
   });
   //.post('/item/byUser', function(request, response){
   //  dbItem.createItemByUser(request.body, function(error, item){
