@@ -15,17 +15,6 @@
   </div>
 
   <div id="finalSales">
-<!--       <table>
-        <td ng-repeat='item in itemList'>
-          <p>{{item.Title}}</p>
-          <p>{{item.ListPrice}}</p>
-       </td>
-      </table> -->
-      <!--<ul ng-repeat='item in itemList'  class="list-inline">-->
-        <!--<li>{{item.Title}}</li>-->
-        <!--<li>{{item.ListPrice}}</li>-->
-        <!--<img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">-->
-      <!--</ul>-->
 
       <div class="ke-item" ng-repeat="item in itemList">
         <img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">
@@ -40,21 +29,19 @@
   <div id="expertReview">
     <ul ng-repeat='expert in expertList'>
       <div class="container-fluid well span6 expert">
-       <div class="row-fluid">
+        <div class="row-fluid">
           <div class="span2">
-             <img src="http://karmatest1.azurewebsites.net/images/{{expert.Images}}" class="img-circle" width="200px" height="200px">
-               </div>
-                      <div class="span8">
-                          <li>{{user.First}}</li>
-                          <li>{{user.Last}}</li>
-                          <li>{{user.Address}}</li>
-                          <li>{{user.Ebay}}</li>
-                          <li>{{user.ZipCode}}</li>
-                      </div>
-              </div>
+            <img src="http://karmatest1.azurewebsites.net/images/{{expert.Image}}" class="img-circle" width="200px" height="200px" style="float:left">
+            <span class="span8" style="display:inline">
+              <li>{{expert.First}}</li>
+              <li>{{expert.Last}}</li>
+              <li>{{expert.Address}}</li>
+              <li>{{expert.Ebay}}</li>
+              <li>{{expert.ZipCode}}</li>
+            </span>
           </div>
         </div>
-      <div>
+      </div>
     </ul>
   </div>
 
