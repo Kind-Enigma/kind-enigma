@@ -4,6 +4,8 @@ var createItem = function(data, callback){
   var findData = {};
   if (data._id != null) {
     findData._id = data._id;
+  } else {
+    findData = data;
   }
   db.Item.findOne(findData, function(error, item){
     if (error || !item) {     // item does not exist
@@ -17,6 +19,7 @@ var createItem = function(data, callback){
       });
     } else {
       //callback('Item exists', null);
+      //update that item
       for (var key in data) {
         item[key] = data[key];
       }
