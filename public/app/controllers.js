@@ -128,7 +128,12 @@ fleabayControllers.controller('expertController', function($scope, $http){
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
-
+  $scope.acceptRequest = function(item){
+    $http.post('http://localhost:1337/api/item', {
+      _id: item,
+      Expert: currentUser[0]._id
+    })
+  }
 });
 
 fleabayControllers.controller('signUpController', function($scope, $http){
