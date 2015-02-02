@@ -58,18 +58,18 @@ router.get('/user', function(request, response){
         response.json(item);
       }
     });
-  })
-  .post('/item/byUser', function(request, response){
-    dbItem.createItemByUser(request.body, function(error, item){
-      console.log(">>HERE<<");
-      if (error) {
-        response.status(404);
-        response.end('User not found or item counld not be created');
-      } else {
-        response.json(item);
-      }
-    });
   });
+  //.post('/item/byUser', function(request, response){
+  //  dbItem.createItemByUser(request.body, function(error, item){
+  //    console.log(">>HERE<<");
+  //    if (error) {
+  //      response.status(404);
+  //      response.end('User not found or item counld not be created');
+  //    } else {
+  //      response.json(item);
+  //    }
+  //  });
+  //});
 
 
 
