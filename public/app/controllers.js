@@ -13,7 +13,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   };
 
   //get some items to show on front page
-  $http.get('http://localhost:8080/api/item').
+  $http.get('http://localhost:1337/api/item').
     success(function(data, status, headers, config){
       $scope.itemList = data.slice(0, 5);
     }).
@@ -22,13 +22,11 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     });
     $scope.expertList = [];
     //get some experts to show on front page
-    $http.get('http://localhost:8080/api/user').
+    $http.get('http://localhost:1337/api/user').
       success(function(data, status, headers, config){
         for(var i = 0; i < data.length; i++){
-          console.log(data[i]);
           if(data[i].IsExpert === true) $scope.expertList.push(data[i]);
         }
-        console.log($scope.expertList);
       }).
       error(function(data, status, headers, config){
         console.log('could not pull data down');
@@ -39,10 +37,9 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $scope.realLogIn = function(){
     var userCellNumber = $scope.userCellNumber;
     var userPassword = $scope.userPassword;
-
-    $http.get('http://localhost:8080/api/user?CellNumber=' + userCellNumber).
+    $http.get('http://localhost:1337/api/user?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
-        $scope.user = data[0];
+        $scope.user = data;
         if (data[0].Password == userPassword){
           if(data[0].isExpert){
             console.log('isanExpert');
@@ -69,7 +66,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
   var userCellNumber = currentUser[0].CellNumber;
   // $scope.itemList = items;
   // $scope.postItem = userPostItem;
-  $http.get('http://localhost:8080/api/item/byuser?CellNumber=' + userCellNumber).
+  $http.get('http://localhost:1337/api/item/byuser?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
 
         $scope.itemList = data;
@@ -82,7 +79,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     var title = $scope.itemTitle;
     var description = $scope.itemDescription;
     var price = $scope.itemPrice;
-    $http.post('http://localhost:8080/api/item',{
+    $http.post('http://localhost:1337/api/item',{
       // Owner: currentUser[0].CellNumber,
       Title: title,
       Description: description,
@@ -114,13 +111,22 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
 });
 
 fleabayControllers.controller('expertController', function($scope, $http){
-  $http.get('http://localhost:8080/api/item')
+  $scope.user = currentUser[0];
+  $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
+  $scope.expertItems = [];
+  $http.get('http://localhost:1337/api/item')
     .success(function(data, status, headers, config){
       $scope.items = data;
+      for(var i = 0; i < $scope.items; i++){
+        if($scope.items[i].Expert === currentUser[0]._id){
+          $scope.expertItems.push($scope.items[i]);
+        }
+      }
     })
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
+
 });
 
 fleabayControllers.controller('signUpController', function($scope, $http){
@@ -130,7 +136,7 @@ fleabayControllers.controller('signUpController', function($scope, $http){
     
     var expert = $scope.value1;
     if(expert){
-      $http.post('http://localhost:8080/api/user', {
+      $http.post('http://localhost:1337/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,
         IsExpert: true
@@ -143,7 +149,7 @@ fleabayControllers.controller('signUpController', function($scope, $http){
           console.log('an error in signUp');
         });
     } else { 
-      $http.post('http://localhost:8080/api/user', {
+      $http.post('http://localhost:1337/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,
       }).
