@@ -42,16 +42,12 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
       success(function(data, status, headers, config){
         $scope.user = data;
         if (data[0].Password == userPassword){
-          if(data[0].isExpert){
-            console.log('isanExpert');
-          }else{
-            currentUser = data;
-            $location.path("/user")
-            if(data[0].IsExpert){
-              $location.path("/expert");
-            } else {
-              $location.path("/user");
-            }
+          currentUser = data;
+          sessionStorage.user = JSON.stringify(data);
+          if(data[0].IsExpert){
+            $location.path("/expert");
+          } else {
+            $location.path("/user");
           }
         }
       }).
@@ -63,13 +59,14 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 });
 
 fleabayControllers.controller('userController', function($scope, $http, $location){
-  $scope.user = currentUser;
+  currentUser = JSON.parse(sessionStorage.user);
+  // console.log(currentUser)
+  // console.log(sessionStorage)
+  $scope.user = currentUser[0];
   var userCellNumber = currentUser[0].CellNumber;
-  // $scope.itemList = items;
-  // $scope.postItem = userPostItem;
+
   $http.get('http://localhost:1337/api/item/byuser?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
-
         $scope.itemList = data;
       }).
       error(function(data, status, headers, config){
@@ -85,16 +82,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
       Owner: currentUser[0]._id,
       Title: title,
       Description: description,
-      // Address: $scope.user.Address,
-      // City: $scope.user.City,
-      // State: $scope.user.State,
-      // ZipCode: $scope.user.ZipCode,
-      // Images: [],
       ListPrice: price,
-      // ListPercentage: 10,
-      // Expert: 'expert',
-      // ListDate: Date,
-      // AcceptedDate: Date
 
     }). // database not uploaded yet
     success(function(data, status, headers, config){
@@ -106,13 +94,13 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
   };
   $scope.logOut = function(){
     currentUser = {};
+    delete sessionStorage.user
     $location.path('/')
   }
-
-  // $scope.logOut = userLogOut;
 });
 
 fleabayControllers.controller('expertController', function($scope, $http){
+  currentUser = JSON.parse(sessionStorage.user);
   $scope.user = currentUser[0];
   $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
   $scope.expertItems = [];
