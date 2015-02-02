@@ -21,12 +21,19 @@
           <p>{{item.ListPrice}}</p>
        </td>
       </table> -->
-      <ul ng-repeat='item in itemList'  class="list-inline">
-        <li>{{item.Title}}</li>
-        <li>{{item.ListPrice}}</li>
+      <!--<ul ng-repeat='item in itemList'  class="list-inline">-->
+        <!--<li>{{item.Title}}</li>-->
+        <!--<li>{{item.ListPrice}}</li>-->
+        <!--<img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">-->
+      <!--</ul>-->
+
+      <div class="ke-item" ng-repeat="item in itemList">
         <img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">
-      </ul>
+        <div class="ke-title">{{item.Title}}</div>
+        <div class="ke-price">{{item.ListPrice}}</div>
+      </div>
   </div>
+
   
 <div id="expertReview">
   <ul ng-repeat"expert in expertList">
@@ -36,6 +43,32 @@
   </ul>
 </div>
 
+
+
+  <div style="clear:both"></div>
+  <br/>
+
+<!--   <div id="expertReview">
+    <ul ng-repeat='expert in expertList'>
+      <div class="container-fluid well span6 expert">
+       <div class="row-fluid">
+          <div class="span2">
+             <img src="http://karmatest1.azurewebsites.net/images/{{expert.Images}}" class="img-circle" width="200px" height="200px">
+               </div>
+                      <div class="span8">
+                          <li>{{user.First}}</li>
+                          <li>{{user.Last}}</li>
+                          <li>{{user.Address}}</li>
+                          <li>{{user.Ebay}}</li>
+                          <li>{{user.ZipCode}}</li>
+                      </div>
+              </div>
+          </div>
+        </div>
+      <div>
+    </ul>
+  </div>
+>>>>>>> 929b169b951af8d6ee1174c3b4e1048af4844f49 -->
 
 
 
