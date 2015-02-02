@@ -1,0 +1,45 @@
+<div class="homepage" ng-controller='mainController'>
+
+  <p id="login">
+    <h3><button ng-click='directToSignUpPage()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button></h3>
+  </p>
+
+  <div id="logInPage">
+    <form name="logInForm">
+      <input id='logInCellNumber' type='string' ng-model="userCellNumber" style="height:20px" required>
+      <input id='logInPassword' type="string" ng-model="userPassword" style="height:20px" required>
+      <button ng-click='realLogIn()' style="width:100px;height:30px">Log In</button>
+    </form>
+  </div>
+
+  <div id="finalSales">
+    <!-- <marquee behavior="scroll" direction="left"> -->
+      <table>
+        <td ng-repeat='item in itemList'>
+          <p>{{item.Title}}</p>
+          <!-- <p>{{item.Description}}</p> -->
+          <p>{{item.ListPrice}}</p>
+<!--           <p>{{item.Lispate}}</p>
+ -->        </td>
+      </table>
+    <!-- </marquee> -->
+  </div>
+  
+  <div id="expertReview">
+    <li ng-repeat='expert in expertList'>
+      <div>
+        <table>
+          <tr><th>First Name</th><th>{{expert.First}}</th></tr>
+          <tr><td>Last Name</td><td>{{expert.Last}}</td></tr>
+<!--           <tr><th>Profile</th><th>{{expert.profile}}</th></tr>
+          <tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
+          <tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr> -->
+        </table>
+      </div>
+    </li>
+  </div>
+
+
+
+  
+</div>

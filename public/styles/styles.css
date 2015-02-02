@@ -1,26 +1,60 @@
+body {
+    background-image: url("123.jpg");
+    /*background-color: #cccccc;*/
+}
+#checkbox{
+    color: white;
+    height: 30px;
+    width: 400px;
+    padding-top: 10px;
+    margin-top: 12px;
+}
+
+.signupPageForms{
+    height: 30px;
+    width: 400px;
+    padding-top: 10px;
+    margin-top: 12px;
+    font-size: 20px;
+}
+
 #banner{
-	background-color: #AFBF3F;
-	height: 150px;
+    /*background-image: url("123.jpg");*/
+	/*background-color: #AFBF3F;*/
+	height: 70px;
 	opacity: 70%;
+    margin-bottom: 12px
 }
 
 #title{
+    text-decoration: none !important;
 	color: white;
-	font-size: 60px;
+	font-size: 80px;
 }
-
+/*
 #expertList{
-	background-color: green;
+}*/
 
-}
-
-#options{
+/*#options{
 	height: 150px;
+}*/
+
+/*#login{
+    padding: 7px;
+}*/
+
+#finalSales{
+    padding-top: 7px;
 }
 
-#login{
-	margin-top: 10px;
-	float: right;
+#signUpPage{
+	display: none;
+    padding-top: 7px;
+}
+
+#logInPage{
+	display: none;
+    padding-top: 7px;
 }
 
 #seller{
@@ -36,4 +70,45 @@
 	height: 100px;
 	width: 100px;
 	margin-left: 100px;
+}
+
+.expertExample {
+	border-radius: 30%;
+	background-color: blue;
+	margin: auto;
+	margin-top: 20px;
+	padding: 30px;
+	width: 70%;
+	height: 100px;
+	text-align: right;
+
+}
+
+
+table {
+    height:100%; 
+    width:80%;
+    font-family: verdana, arial, sans-serif;
+    font-size: 18px;
+    color: #333333;
+    border-width: 1px;
+    border-color: black;
+    border-collapse: collapse;
+}
+table th {
+    height: 20px;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+    text-align: center;
+}
+table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    text-align: center;
 }

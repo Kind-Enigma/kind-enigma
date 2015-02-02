@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Kind-Enigma/kind-enigma",
   "dependencies": {
     "body-parser": "^1.10.2",
+    "cors": "^2.5.3",
     "express": "^4.11.1",
     "mongoose": "^3.8.21"
   }

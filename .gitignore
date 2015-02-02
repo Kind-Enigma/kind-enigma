@@ -2,5 +2,6 @@
 
 node_modules
 client/libs
-public/bower_com
+public/images
+
 .idea

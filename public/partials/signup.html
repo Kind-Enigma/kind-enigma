@@ -1,0 +1,15 @@
+<div class="newSignUpPage" ng-controller='signUpController'>
+  <form name="signupForm" ng-submit='signUp()'>
+    <p><input class="signupPageForms" type='text' ng-model='firstName' placeholder="First Name" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='lastName' placeholder="Last Name" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='cellNumber' placeholder="Cell Number" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='address' placeholder="Street Address" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='city' placeholder="City" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='state' placeholder="State" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='zipCode' placeholder="Zip Code" required></p>
+    <p><input class="signupPageForms" type="text" ng-model='email' placeholder="E-mail" required></p>
+    <p><input class="signupPageForms" type="password" ng-model='password' placeholder="Password"required></p>
+    <p id="checkbox"><input type="checkbox" ng-model="value1"> Expert? Check the box if you are an expert!</input></p>
+    <button ng-click='realSignUp()' style="width:100px;height:30px">SignUp</button>
+  </form>
+</div>

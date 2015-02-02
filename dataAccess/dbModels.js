@@ -24,7 +24,12 @@ var userSchema = mongoose.Schema({
   Email: String,
   Password: String,
   EBayUsername: String,
-  EBayRating: Number
+  EBayRating: Number,
+  Image: String,
+  IsExpert: {
+    type: Boolean,
+    default: false
+  }
 });
 // User Model
 var User = mongoose.model('User', userSchema);
@@ -38,6 +43,7 @@ var itemSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  Title: String,
   Description: String,
   Address: String,
   City: String,
