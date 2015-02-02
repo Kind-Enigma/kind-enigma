@@ -1,8 +1,8 @@
 <div class="homepage" ng-controller='mainController'>
 
-  <p id="login">
-    <h3><button ng-click='directToSignUpPage()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button></h3>
-  </p>
+  <div class="nav-pill">
+    <button ng-click='directToSignUpPage()' style="width:100px;height:30px">Sign Up</button><button ng-click='logIn()' style="width:100px;height:30px">Log In</button>
+  </div>
 
   <div id="logInPage">
     <form name="logInForm">
@@ -15,30 +15,38 @@
   </div>
 
   <div id="finalSales">
-    <!-- <marquee behavior="scroll" direction="left"> -->
-      <table>
+<!--       <table>
         <td ng-repeat='item in itemList'>
           <p>{{item.Title}}</p>
-          <!-- <p>{{item.Description}}</p> -->
           <p>{{item.ListPrice}}</p>
-<!--           <p>{{item.Lispate}}</p>
- -->        </td>
-      </table>
-    <!-- </marquee> -->
+       </td>
+      </table> -->
+      <ul ng-repeat='item in itemList'  class="list-inline">
+        <li>{{item.Title}}</li>
+        <li>{{item.ListPrice}}</li>
+        <img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">
+      </ul>
   </div>
   
   <div id="expertReview">
-    <li ng-repeat='expert in expertList'>
+    <ul ng-repeat='expert in expertList'>
+      <div class="container-fluid well span6 expert">
+       <div class="row-fluid">
+          <div class="span2">
+             <img src="http://karmatest1.azurewebsites.net/images/{{expert.Images}}" class="img-circle" width="200px" height="200px">
+               </div>
+                      <div class="span8">
+                          <li>{{user.First}}</li>
+                          <li>{{user.Last}}</li>
+                          <li>{{user.Address}}</li>
+                          <li>{{user.Ebay}}</li>
+                          <li>{{user.ZipCode}}</li>
+                      </div>
+              </div>
+          </div>
+        </div>
       <div>
-        <table>
-          <tr><th>First Name</th><th>{{expert.First}}</th></tr>
-          <tr><td>Last Name</td><td>{{expert.Last}}</td></tr>
-<!--           <tr><th>Profile</th><th>{{expert.profile}}</th></tr>
-          <tr><td>Ebay Link</td><td>{{expert.ebayLink}}</td></tr>
-          <tr><th>Item Sold</th><th>{{expert.itemSold}}</th></tr> -->
-        </table>
-      </div>
-    </li>
+    </ul>
   </div>
 
 

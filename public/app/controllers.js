@@ -16,6 +16,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $http.get('http://localhost:1337/api/item').
     success(function(data, status, headers, config){
       $scope.itemList = data.slice(0, 5);
+      console.log('itemList', itemList);
     }).
     error(function(data, status, headers, config){
       console.log('could not pull data down');
@@ -59,6 +60,11 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 });
 
 fleabayControllers.controller('userController', function($scope, $http, $location){
+  $scope.user = currentUser[0];
+  var userCellNumber = currentUser[0].CellNumber;
+  $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
+  // $scope.itemList = items;
+  // $scope.postItem = userPostItem;
   currentUser = JSON.parse(sessionStorage.user);
   // console.log(currentUser)
   // console.log(sessionStorage)
@@ -70,7 +76,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
         $scope.itemList = data;
       }).
       error(function(data, status, headers, config){
-        console.log('there is an error')
+        console.log('there is an error');
       });
 
   $scope.postItem = function(){

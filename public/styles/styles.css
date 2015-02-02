@@ -1,6 +1,10 @@
 body {
     background-color: #F5B800;
 }
+
+li{
+    list-style: none;
+}
 #checkbox{
     color: white;
     height: 30px;
@@ -45,6 +49,8 @@ body {
 
 #finalSales{
     padding-top: 7px;
+    margin: center;
+    margin-bottom: 15px;
 }
 
 #signUpPage{
@@ -66,10 +72,7 @@ body {
 }
 
 #expert{
-	display: inline;
-	height: 100px;
-	width: 100px;
-	margin-left: 100px;
+    margin-top: 15px;
 }
 
 .expertExample {
