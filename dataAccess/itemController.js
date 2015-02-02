@@ -34,11 +34,11 @@ var createItem = function(data, callback){
 var getItems = function(data, callback){
   //console.log('Find item where:', data);
   // this regex matchng allows for partial matches to be found
-  for (var key in data) {
-    if (key !== '_id') {
-      data[key] = new RegExp(data[key], 'i');
-    }
-  }
+  //for (var key in data) {
+  //  if (key !== '_id' || key !== 'Owner' || key !== 'Expert') {
+  //    data[key] = new RegExp(data[key], 'i');
+  //  }
+  //}
   db.Item.find(data)
     .populate('Owner')
     //.populate('Owner', 'First Last CellNumber')     // load user item with these fields only
@@ -91,7 +91,32 @@ var createItemByUser = function(data, callback) {
   });
 };
 
+var getUnsoldItems = function(data, callback){
+  console.log("Find unsold items");
+  var unsold = db.Item.where('Expert').exists(false).exec(function(error, result){
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
+var getSoldItems = function(data, callback){
+  console.log("Find sold items");
+  var unsold = db.Item.where('Expert').exists(true).exec(function(error, result){
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
+
 module.exports.createItem = createItem;
 module.exports.getItems = getItems;
 //module.exports.getItemsByUser = getItemByUser;
 module.exports.createItemByUser = createItemByUser;
+module.exports.getSoldItems = getSoldItems;
+module.exports.getUnsoldItems = getUnsoldItems;
