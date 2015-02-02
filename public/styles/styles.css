@@ -115,3 +115,19 @@ table td {
     background-color: #ffffff;
     text-align: center;
 }
+
+/*Wayne*/
+
+.ke-item {
+  width: 220px;
+  float: left;
+  border: 2px solid black;
+}
+
+.ke-item img {
+  float: left;
+}
+
+.ke-title {
+  font-weight: bold;
+}
