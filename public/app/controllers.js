@@ -119,15 +119,17 @@ fleabayControllers.controller('expertController', function($scope, $http){
   $http.get('http://localhost:1337/api/item')
     .success(function(data, status, headers, config){
       $scope.items = data;
-      for(var i = 0; i < $scope.items; i++){
-        if($scope.items[i].Expert === currentUser[0]._id){
-          $scope.expertItems.push($scope.items[i]);
-        }
-      }
     })
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
+    $http.get('http://localhost:1337/api/item?Expert=' + currentUser[0]._id)
+      .success(function(data, status, headers, config){
+        $scope.expertItems = data;
+      })
+      .error(function(data, status, headers, config){
+        console.log('error getting data');
+      })
   $scope.acceptRequest = function(item){
     $http.post('http://localhost:1337/api/item', {
       _id: item,
