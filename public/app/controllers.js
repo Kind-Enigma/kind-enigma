@@ -37,6 +37,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   $scope.realLogIn = function(){
     var userCellNumber = $scope.userCellNumber;
     var userPassword = $scope.userPassword;
+
     $http.get('http://localhost:1337/api/user?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
         $scope.user = data;
@@ -80,7 +81,8 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     var description = $scope.itemDescription;
     var price = $scope.itemPrice;
     $http.post('http://localhost:1337/api/item',{
-      // Owner: currentUser[0].CellNumber,
+
+      Owner: currentUser[0]._id,
       Title: title,
       Description: description,
       // Address: $scope.user.Address,
