@@ -99,7 +99,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
   }
 });
 
-fleabayControllers.controller('expertController', function($scope, $http){
+fleabayControllers.controller('expertController', function($scope, $http, $location){
   currentUser = JSON.parse(sessionStorage.user);
   $scope.user = currentUser[0];
   $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
@@ -123,7 +123,13 @@ fleabayControllers.controller('expertController', function($scope, $http){
       _id: item,
       Expert: currentUser[0]._id
     })
-  }
+  };
+
+  $scope.logOut = function(){
+    currentUser = {};
+    delete sessionStorage.user
+    $location.path('/')
+  };
 });
 
 fleabayControllers.controller('signUpController', function($scope, $http){
