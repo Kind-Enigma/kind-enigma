@@ -25,10 +25,8 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     $http.get('http://localhost:1337/api/user').
       success(function(data, status, headers, config){
         for(var i = 0; i < data.length; i++){
-          console.log(data[i]);
           if(data[i].IsExpert === true) $scope.expertList.push(data[i]);
         }
-        console.log($scope.expertList);
       }).
       error(function(data, status, headers, config){
         console.log('could not pull data down');
@@ -42,7 +40,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 
     $http.get('http://localhost:1337/api/user?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
-        $scope.user = data[0];
+        $scope.user = data;
         if (data[0].Password == userPassword){
           if(data[0].isExpert){
             console.log('isanExpert');
@@ -83,6 +81,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     var description = $scope.itemDescription;
     var price = $scope.itemPrice;
     $http.post('http://localhost:1337/api/item',{
+
       Owner: currentUser[0]._id,
       Title: title,
       Description: description,
@@ -114,6 +113,9 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
 });
 
 fleabayControllers.controller('expertController', function($scope, $http){
+  $scope.user = currentUser[0];
+  $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
+  $scope.expertItems = [];
   $http.get('http://localhost:1337/api/item')
     .success(function(data, status, headers, config){
       $scope.items = data;
@@ -121,6 +123,19 @@ fleabayControllers.controller('expertController', function($scope, $http){
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
+    $http.get('http://localhost:1337/api/item?Expert=' + currentUser[0]._id)
+      .success(function(data, status, headers, config){
+        $scope.expertItems = data;
+      })
+      .error(function(data, status, headers, config){
+        console.log('error getting data');
+      })
+  $scope.acceptRequest = function(item){
+    $http.post('http://localhost:1337/api/item', {
+      _id: item,
+      Expert: currentUser[0]._id
+    })
+  }
 });
 
 fleabayControllers.controller('signUpController', function($scope, $http){

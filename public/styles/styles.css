@@ -1,6 +1,5 @@
 body {
-    background-image: url("123.jpg");
-    /*background-color: #cccccc;*/
+    background-color: #F5B800;
 }
 #checkbox{
     color: white;
@@ -28,12 +27,13 @@ body {
 
 #title{
     text-decoration: none !important;
-	color: white;
+	color: black;
 	font-size: 80px;
 }
-/*
-#expertList{
-}*/
+
+#expertItemList{
+    background-color: blue;
+}
 
 /*#options{
 	height: 150px;

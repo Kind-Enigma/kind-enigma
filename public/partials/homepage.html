@@ -6,7 +6,9 @@
 
   <div id="logInPage">
     <form name="logInForm">
+      <label> Cell Number </label>
       <input id='logInCellNumber' type='string' ng-model="userCellNumber" style="height:20px" required>
+      <label> Password </label>
       <input id='logInPassword' type="string" ng-model="userPassword" style="height:20px" required>
       <button ng-click='realLogIn()' style="width:100px;height:30px">Log In</button>
     </form>

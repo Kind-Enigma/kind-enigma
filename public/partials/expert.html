@@ -1,8 +1,7 @@
-<div class="expertPage" ng-controller='expertController'>
-  <h1>This is the expert Page!!!</h1>
+<!-- <div class="expertPage" ng-controller='expertController'>
 
   <div id='expertProfile'>
-    <span>Welcome {{user}}</span>
+    <span>Welcome {{user.First}}</span>
   </div>
 
   <div>
@@ -25,4 +24,53 @@
     </li>
   </div>
 </div>
+</div>
+ -->
+<div class="expertPage" ng-controller='expertController'>
+  <!--Expert Profile -->
+ <div class="container-fluid well span6">
+  <div class="row-fluid">
+         <div class="span2">
+        <img src="{{imageUrl}}" class="img-circle">
+         </div>
+         
+         <div class="span8">
+             <h3>{{user.First}}</h3>
+             <h4>{{user.Last}}</h4>
+             <h4>{{user.Address}}</h4>
+             <h4>{{user.Ebay}}</h4>
+             <h4>{{user.ZipCode}}</h4>
+         </div>
+
+  </div>
+ </div>
+
+ <!-- Expert Item information -->
+ <div id='expertItemList'>
+   <li ng-repeat='item in expertItems'>
+     <h2>{{item.Title}}<h2>
+     <p>Listed Price: {{item.ListPrice}}</p>
+     <p>Listed Date: {{item.ListDate}}</p>
+     <p>Zip Code: {{item.ZipCode}}</p>
+     <span>Accepted Date: {{item.AcceptedDate}}</span>
+   </li>
+ </div>
+
+
+<!-- All Item information -->
+<div id='userItemList'>
+  <label>Search by Price</label><input type="text" name="price" ng-model="price"></input>
+  <br>
+  <br>
+  <li ng-repeat='item in items | filter: price'>
+    <h2>{{item.Title}}<h2>
+    <p>{{item.Description}}</p>
+    <p>Listed Price: {{item.ListPrice}}</p>
+    <p>Listed Date: {{item.ListDate}}</p>
+    <p>Zip Code: {{item.ZipCode}}</p>
+    <span>Accepted Date: {{item.AcceptedDate}}</span>
+    <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept Request</button>
+  </li>
+</div>
+
 </div>
