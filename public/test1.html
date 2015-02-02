@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="bower_components/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+ <h1>Users</h1>
+  <div ng-controller="itemController">
+    {{ items.length }}
+    <div ng-repeat="item in items">
+      <img src="http://karmatest1.azurewebsites.net/images/{{ item.Images[0] }}" width="170px"/>
+      <div>
+        <h4>{{ item.Title }} - {{ item.Owner.First }} {{ item.Owner.Last }}</h4>
+        <p>{{ item.Description }}</p>
+      </div>
+
+    </div>
+  </div>
+  <div ng-controller="userController">
+    {{ name }}-{{ users.length }}
+  </div>
+
+</body>
+
+<script>
+
+  var app = angular.module('app', []);
+
+  app.controller('itemController', function($scope, $http){
+    $http.get('http://karmatest1.azurewebsites.net/api/item')
+      .success(function(data, status){
+        console.log(data);
+        $scope.items = data;
+      });
+  });
+
+  app.controller('userController', function($scope, $http){
+    $scope.name = "Wayne";
+    $http.get('http://karmatest1.azurewebsites.net/api/user')
+      .success(function(data, status){
+        //console.log(data);
+        $scope.users = data;
+      });
+  });
+
+</script>
+</html>

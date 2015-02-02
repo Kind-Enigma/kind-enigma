@@ -21,13 +21,22 @@
           <p>{{item.ListPrice}}</p>
        </td>
       </table> -->
-      <ul ng-repeat='item in itemList'  class="list-inline">
-        <li>{{item.Title}}</li>
-        <li>{{item.ListPrice}}</li>
+      <!--<ul ng-repeat='item in itemList'  class="list-inline">-->
+        <!--<li>{{item.Title}}</li>-->
+        <!--<li>{{item.ListPrice}}</li>-->
+        <!--<img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">-->
+      <!--</ul>-->
+
+      <div class="ke-item" ng-repeat="item in itemList">
         <img src='http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}' height="100px" width="100px">
-      </ul>
+        <div class="ke-title">{{item.Title}}</div>
+        <div class="ke-price">{{item.ListPrice}}</div>
+      </div>
   </div>
-  
+
+  <div style="clear:both"></div>
+  <br/>
+
   <div id="expertReview">
     <ul ng-repeat='expert in expertList'>
       <div class="container-fluid well span6 expert">
