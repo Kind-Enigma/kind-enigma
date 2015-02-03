@@ -89,6 +89,9 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     }). // database not uploaded yet
     success(function(data, status, headers, config){
       console.log('succesfully posted an item');
+      $scope.itemTitle = '';
+      $scope.itemDescription = '';
+      $scope.itemPrice = '';
     }).
     error(function(data, status, headers, config){
       console.log('did not succesfully post an item');
