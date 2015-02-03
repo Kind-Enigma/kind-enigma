@@ -30,9 +30,9 @@
   <!--Expert Profile -->
  <div class="container-fluid well span6">
   <div class="row-fluid">
-      <div class="span2">
-        <img src="{{imageUrl}}" class="img-circle">
-      </div>
+
+        <img src="{{imageUrl}}" class="img-circle" height="220" width="220" style="float:left; padding: 30px;">
+
          
          <div class="span8">
              <h3>{{user.First}}</h3>
@@ -47,31 +47,47 @@
  </div>
 
  <!-- Expert Item information -->
+
  <div id='expertItemList'>
-   <li ng-repeat='item in expertItems'>
-     <h2>{{item.Title}}<h2>
-     <p>Listed Price: {{item.ListPrice}}</p>
-     <p>Listed Date: {{item.ListDate}}</p>
-     <p>Zip Code: {{item.ZipCode}}</p>
-     <span>Accepted Date: {{item.AcceptedDate}}</span>
-   </li>
+   <h2>Items Purchased</h2>
+   <div ng-repeat='item in expertItems'>
+     <div >
+       <img src="http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}" width="200" height="200" style="float:left;margin:20px;border:2px solid black">
+       <h2>{{item.Title}}</h2>
+       <p>{{item.Description}}</p>
+       <p>Listed Price: {{item.ListPrice}}</p>
+       <p>Listed Date: {{item.ListDate}}</p>
+       <p>Zip Code: {{item.Owner.ZipCode}}</p>
+       <span>Accepted Date: {{item.AcceptedDate}}</span>
+       <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept Request</button>
+
+     </div>
+     <div style="clear:both"></div>
+   </div>
  </div>
 
+  <br><br>
 
 <!-- All Item information -->
 <div id='userItemList'>
-  <label>Search by Price</label><input type="text" name="price" ng-model="price"></input>
+  <h2>Purchase Items</h2>
+  <label>Search</label><input type="text" name="price" ng-model="price.$"></input>
   <br>
   <br>
-  <li ng-repeat='item in items | filter: price'>
-    <h2>{{item.Title}}<h2>
-    <p>{{item.Description}}</p>
-    <p>Listed Price: {{item.ListPrice}}</p>
-    <p>Listed Date: {{item.ListDate}}</p>
-    <p>Zip Code: {{item.Owner.ZipCode}}</p>
-    <span>Accepted Date: {{item.AcceptedDate}}</span>
-    <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept Request</button>
-  </li>
+  <div ng-repeat='item in items | filter: price'>
+    <img src="http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}" width="200" height="200" style="float:left;margin:20px;border:2px solid black">
+    <div >
+      <h2>{{item.Title}}</h2>
+      <p>{{item.Description}}</p>
+      <p>Listed Price: {{item.ListPrice}}</p>
+      <p>Listed Date: {{item.ListDate}}</p>
+      <p>Zip Code: {{item.Owner.ZipCode}}</p>
+      <span>Accepted Date: {{item.AcceptedDate}}</span>
+      <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept Request</button>
+
+    </div>
+    <div style="clear:both"></div>
+  </div>
 </div>
 
 </div>

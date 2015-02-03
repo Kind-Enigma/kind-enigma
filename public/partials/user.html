@@ -3,7 +3,7 @@
   <div class="container-fluid well span6">
    <div class="row-fluid">
       <div class="span2">
-         <img src="{{imageUrl}}" class="img-circle" width="300px" height="300px">
+         <img src="{{imageUrl}}" class="img-circle" width="300px" height="300px" style="float:left; padding:30px">
            </div>
                   <div class="span8">
                       <h3>{{user.First}}</h3>
@@ -15,10 +15,12 @@
           </div>
       </div>
     </div>
+  <div class="clear:both"></div>
   <div>
     <button ng-click='postItem()' style="width:200px;height:70px">Post Item</button>
     <button ng-click='logOut()' style="width:200px;height:70px">Log Out</button>
   </div>
+<br><br>
 
   <div>
     <form name="postItemForm">
@@ -33,11 +35,14 @@
   </div>
 
   <div id='userItemList'>
-    <ul ng-repeat='item in itemList'>
-      <li>{{item.Title}}<li>
-      <li>{{item.Description}}</li>
-      <li>{{item.ListPrice}}</li>
-      <li>{{item.ListDate}}</li>
-    </ul>
-  </div>
+    <div ng-repeat='item in itemList'>
+      <div>
+      <img src="http://karmatest1.azurewebsites.net/images/{{item.Images[0]}}" width="200" height="200" style="float:left;margin:20px;border:2px solid black">
+      <h2>{{item.Title}}</h2>
+      <div>{{item.Description}}</div>
+      <div>{{item.ListPrice}}</div>
+      <div>{{item.ListDate}}</div>
+    </div>
+      <div style="clear:both"></div>
+    </div>
 </div>

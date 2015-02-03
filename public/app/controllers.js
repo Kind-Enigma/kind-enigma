@@ -152,6 +152,7 @@ fleabayControllers.controller('signUpController', function($scope, $http){
       }).
         success(function(data, status, headers, config){
           currentUser = data;
+          sessionStorage.user = JSON.stringify(data);
           $location.path('/expert')
         }).
         error(function(data, status, headers, config){
@@ -164,7 +165,8 @@ fleabayControllers.controller('signUpController', function($scope, $http){
       }).
         success(function(data, status, headers, config){
           currentUser = data;
-          $location.path('/user')
+          sessionStorage.user = JSON.stringify(data);
+          $location.path('../user')
         }).
         error(function(data, status, headers, config){
           console.log('an error in signUp');

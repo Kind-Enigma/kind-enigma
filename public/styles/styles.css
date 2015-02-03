@@ -36,7 +36,8 @@ li{
 }
 
 #expertItemList{
-    background-color: blue;
+    padding: 20px;
+    background-color: #da9746;
 }
 
 /*#options{
