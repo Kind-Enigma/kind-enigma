@@ -36,7 +36,12 @@ li{
 }
 
 #expertItemList{
+<<<<<<< HEAD
     background-color: white;
+=======
+    padding: 20px;
+    background-color: #da9746;
+>>>>>>> 9ac5458c3f79b6d43445da55f9959dc5288dc15b
 }
 
 /*#options{
