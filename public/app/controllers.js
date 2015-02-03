@@ -60,15 +60,11 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
 });
 
 fleabayControllers.controller('userController', function($scope, $http, $location){
-  $scope.user = currentUser[0];
+  currentUser = JSON.parse(sessionStorage.user);
+  $scope.user = currentUser[0]
   var userCellNumber = currentUser[0].CellNumber;
   $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
-  // $scope.itemList = items;
-  // $scope.postItem = userPostItem;
-  currentUser = JSON.parse(sessionStorage.user);
-  // console.log(currentUser)
-  // console.log(sessionStorage)
-  $scope.user = currentUser[0];
+
   var userCellNumber = currentUser[0].CellNumber;
 
   $http.get('http://karmatest1.azurewebsites.net/api/item/byuser?CellNumber=' + userCellNumber).
