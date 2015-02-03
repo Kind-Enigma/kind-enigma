@@ -13,7 +13,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
   };
 
   //get some items to show on front page
-  $http.get('http://localhost:1337/api/item').
+  $http.get('http://karmatest1.azurewebsites.net/api/item').
     success(function(data, status, headers, config){
       $scope.itemList = data.slice(0, 5);
       console.log('itemList', itemList);
@@ -23,7 +23,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     });
     $scope.expertList = [];
     //get some experts to show on front page
-    $http.get('http://localhost:1337/api/user').
+    $http.get('http://karmatest1.azurewebsites.net/api/user').
       success(function(data, status, headers, config){
         for(var i = 0; i < data.length; i++){
           if(data[i].IsExpert === true) $scope.expertList.push(data[i]);
@@ -39,7 +39,7 @@ fleabayControllers.controller('mainController', function($scope, $location, $htt
     var userCellNumber = $scope.userCellNumber;
     var userPassword = $scope.userPassword;
 
-    $http.get('http://localhost:1337/api/user?CellNumber=' + userCellNumber).
+    $http.get('http://karmatest1.azurewebsites.net/api/user?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
         $scope.user = data;
         if (data[0].Password == userPassword){
@@ -71,7 +71,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
   $scope.user = currentUser[0];
   var userCellNumber = currentUser[0].CellNumber;
 
-  $http.get('http://localhost:1337/api/item/byuser?CellNumber=' + userCellNumber).
+  $http.get('http://karmatest1.azurewebsites.net/api/item/byuser?CellNumber=' + userCellNumber).
       success(function(data, status, headers, config){
         $scope.itemList = data;
       }).
@@ -83,7 +83,7 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     var title = $scope.itemTitle;
     var description = $scope.itemDescription;
     var price = $scope.itemPrice;
-    $http.post('http://localhost:1337/api/item',{
+    $http.post('http://karmatest1.azurewebsites.net/api/item',{
 
       Owner: currentUser[0]._id,
       Title: title,
@@ -110,14 +110,14 @@ fleabayControllers.controller('expertController', function($scope, $http, $locat
   $scope.user = currentUser[0];
   $scope.imageUrl = 'http://karmatest1.azurewebsites.net/images/' + currentUser[0].Image;
   $scope.expertItems = [];
-  $http.get('http://localhost:1337/api/item')
+  $http.get('http://karmatest1.azurewebsites.net/api/item/unsold')
     .success(function(data, status, headers, config){
       $scope.items = data;
     })
     .error(function(data, status, headers, config){
       console.log('error getting data');
     })
-    $http.get('http://localhost:1337/api/item?Expert=' + currentUser[0]._id)
+    $http.get('http://karmatest1.azurewebsites.net/api/item?Expert=' + currentUser[0]._id)
       .success(function(data, status, headers, config){
         $scope.expertItems = data;
       })
@@ -125,7 +125,7 @@ fleabayControllers.controller('expertController', function($scope, $http, $locat
         console.log('error getting data');
       })
   $scope.acceptRequest = function(item){
-    $http.post('http://localhost:1337/api/item', {
+    $http.post('http://karmatest1.azurewebsites.net/api/item', {
       _id: item,
       Expert: currentUser[0]._id
     })
@@ -145,7 +145,7 @@ fleabayControllers.controller('signUpController', function($scope, $http){
     
     var expert = $scope.value1;
     if(expert){
-      $http.post('http://localhost:1337/api/user', {
+      $http.post('http://karmatest1.azurewebsites.net/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,
         IsExpert: true
@@ -158,7 +158,7 @@ fleabayControllers.controller('signUpController', function($scope, $http){
           console.log('an error in signUp');
         });
     } else { 
-      $http.post('http://localhost:1337/api/user', {
+      $http.post('http://karmatest1.azurewebsites.net/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,
       }).
