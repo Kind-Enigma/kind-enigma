@@ -30,9 +30,9 @@
   <!--Expert Profile -->
  <div class="container-fluid well span6">
   <div class="row-fluid">
-         <div class="span2">
+      <div class="span2">
         <img src="{{imageUrl}}" class="img-circle">
-         </div>
+      </div>
          
          <div class="span8">
              <h3>{{user.First}}</h3>
@@ -43,13 +43,13 @@
          </div>
          <button ng-click='logOut()' style="width:200px;height:70px">Log Out</button>
 
-  </div>
+      </div>
  </div>
 
  <!-- Expert Item information -->
  <div id='expertItemList'>
    <li ng-repeat='item in expertItems'>
-     <h2>{{item.Title}}<h2>
+     <h2>{{item.Title}}</h2>
      <p>Listed Price: {{item.ListPrice}}</p>
      <p>Listed Date: {{item.ListDate}}</p>
      <p>Zip Code: {{item.Owner.ZipCode}}</p>
@@ -60,14 +60,15 @@
 
 <!-- All Item information -->
 <div id='userItemList'>
-  <label>Search by Price</label><input type="text" name="price" ng-model="price"></input>
+  <label>Search by Zip Code</label><input type="text" name="price" ng-model="price"></input>
   <br>
   <br>
   <li ng-repeat='item in items | filter: price'>
-    <h2>{{item.Title}}<h2>
+    <h2>{{item.Title}}</h2>
     <p class="itemDescription">{{item.Description}}</p>
     <p>Listed Price: {{item.ListPrice}}</p>
     <p>Listed Date: {{item.ListDate}}</p>
+    <p>Zip Code: {{item.Owner.ZipCode}}</p>
     <span>Accepted Date: {{item.AcceptedDate}}</span>
     <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept</button>
   </li>

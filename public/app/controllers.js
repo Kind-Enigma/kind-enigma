@@ -157,7 +157,8 @@ fleabayControllers.controller('signUpController', function($scope, $http){
         error(function(data, status, headers, config){
           console.log('an error in signUp');
         });
-    } else { 
+    } 
+    else { 
       $http.post('http://karmatest1.azurewebsites.net/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,

@@ -96,7 +96,10 @@ var createItemByUser = function(data, callback) {
 
 var getUnsoldItems = function(data, callback){
   console.log("Find unsold items");
-  var unsold = db.Item.where('Expert').exists(false).exec(function(error, result){
+  var unsold = db.Item.find()
+    .populate('Owner')
+    .where('Expert').exists(false)
+    .exec(function(error, result){
     if (error) {
       callback(error, null);
     } else {
@@ -107,7 +110,10 @@ var getUnsoldItems = function(data, callback){
 
 var getSoldItems = function(data, callback){
   console.log("Find sold items");
-  var unsold = db.Item.where('Expert').exists(true).exec(function(error, result){
+  var unsold = db.Item.find()
+    .populate('Owner')
+    .where('Expert').exists(true)
+    .exec(function(error, result){
     if (error) {
       callback(error, null);
     } else {
