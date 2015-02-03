@@ -53,6 +53,10 @@ li{
     margin-bottom: 15px;
 }
 
+.itemDescription{
+    font-size: 60%;
+}
+
 #signUpPage{
 	display: none;
     padding-top: 7px;
@@ -85,6 +89,11 @@ li{
 	height: 100px;
 	text-align: right;
 
+}
+
+.userItemList{
+    background-color: white;
+    border-radius: 3%;
 }
 
 

@@ -52,7 +52,7 @@
      <h2>{{item.Title}}<h2>
      <p>Listed Price: {{item.ListPrice}}</p>
      <p>Listed Date: {{item.ListDate}}</p>
-     <p>Zip Code: {{item.ZipCode}}</p>
+     <p>Zip Code: {{item.Owner.ZipCode}}</p>
      <span>Accepted Date: {{item.AcceptedDate}}</span>
    </li>
  </div>
@@ -65,12 +65,11 @@
   <br>
   <li ng-repeat='item in items | filter: price'>
     <h2>{{item.Title}}<h2>
-    <p>{{item.Description}}</p>
+    <p class="itemDescription">{{item.Description}}</p>
     <p>Listed Price: {{item.ListPrice}}</p>
     <p>Listed Date: {{item.ListDate}}</p>
-    <p>Zip Code: {{item.ZipCode}}</p>
     <span>Accepted Date: {{item.AcceptedDate}}</span>
-    <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept Request</button>
+    <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept</button>
   </li>
 </div>
 
