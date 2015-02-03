@@ -36,8 +36,12 @@ li{
 }
 
 #expertItemList{
+<<<<<<< HEAD
+    background-color: white;
+=======
     padding: 20px;
     background-color: #da9746;
+>>>>>>> 9ac5458c3f79b6d43445da55f9959dc5288dc15b
 }
 
 /*#options{
@@ -52,6 +56,10 @@ li{
     padding-top: 7px;
     margin: center;
     margin-bottom: 15px;
+}
+
+.itemDescription{
+    font-size: 60%;
 }
 
 #signUpPage{
@@ -86,6 +94,11 @@ li{
 	height: 100px;
 	text-align: right;
 
+}
+
+.userItemList{
+    background-color: white;
+    border-radius: 3%;
 }
 
 

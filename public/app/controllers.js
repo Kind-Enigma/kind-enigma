@@ -89,6 +89,9 @@ fleabayControllers.controller('userController', function($scope, $http, $locatio
     }). // database not uploaded yet
     success(function(data, status, headers, config){
       console.log('succesfully posted an item');
+      $scope.itemTitle = '';
+      $scope.itemDescription = '';
+      $scope.itemPrice = '';
     }).
     error(function(data, status, headers, config){
       console.log('did not succesfully post an item');
@@ -154,7 +157,8 @@ fleabayControllers.controller('signUpController', function($scope, $http){
         error(function(data, status, headers, config){
           console.log('an error in signUp');
         });
-    } else { 
+    } 
+    else { 
       $http.post('http://karmatest1.azurewebsites.net/api/user', {
         CellNumber: signUpCellNumber,
         Password: signUpPassword,

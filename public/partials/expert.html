@@ -49,6 +49,15 @@
  <!-- Expert Item information -->
 
  <div id='expertItemList'>
+<!-- <<<<<<< HEAD
+   <li ng-repeat='item in expertItems'>
+     <h2>{{item.Title}}</h2>
+     <p>Listed Price: {{item.ListPrice}}</p>
+     <p>Listed Date: {{item.ListDate}}</p>
+     <p>Zip Code: {{item.Owner.ZipCode}}</p>
+     <span>Accepted Date: {{item.AcceptedDate}}</span>
+   </li>
+======= -->
    <h2>Items Purchased</h2>
    <div ng-repeat='item in expertItems'>
      <div >
@@ -70,6 +79,20 @@
 
 <!-- All Item information -->
 <div id='userItemList'>
+<!-- <<<<<<< HEAD
+  <label>Search by Zip Code</label><input type="text" name="price" ng-model="price"></input>
+  <br>
+  <br>
+  <li ng-repeat='item in items | filter: price'>
+    <h2>{{item.Title}}</h2>
+    <p class="itemDescription">{{item.Description}}</p>
+    <p>Listed Price: {{item.ListPrice}}</p>
+    <p>Listed Date: {{item.ListDate}}</p>
+    <p>Zip Code: {{item.Owner.ZipCode}}</p>
+    <span>Accepted Date: {{item.AcceptedDate}}</span>
+    <button ng-click='acceptRequest(item._id)' style="width:200px;height:40px">Accept</button>
+  </li>
+======= -->
   <h2>Purchase Items</h2>
   <label>Search</label><input type="text" name="price" ng-model="price.$"></input>
   <br>
